@@ -1,6 +1,8 @@
 package gradproj.demo.qboard;
 
-import gradproj.demo.qboard.dto.*;
+import gradproj.demo.qboard.dto.controller.request.*;
+import gradproj.demo.qboard.dto.controller.response.*;
+import gradproj.demo.qboard.dto.service.request.*;
 import org.springframework.web.bind.annotation.*;
 
 // 질문 게시판 Controller
@@ -30,8 +32,8 @@ public class QBoardController {
 
     // 질문 조회
     @GetMapping("/post")
-    public ResponseQuestionReadDto readQuestion(long postId) {
-        qBoardService.readQuestion(postId);
+    public ResponseQuestionReadDto readQuestion(RequestQuestionReadDto dto) {
+        qBoardService.readQuestion(new CRequestQuestionReadDto());
         return new ResponseQuestionReadDto();
     }
 
@@ -46,15 +48,15 @@ public class QBoardController {
 
     // 질문 검색
     @GetMapping("/search")
-    public ResponseQuestionSearchDto searchQuestion(String keyword) {
-        qBoardService.search(keyword);
+    public ResponseQuestionSearchDto searchQuestion(RequestQuestionSearchDto dto) {
+        qBoardService.search(new CRequestQuestionSearchDto());
         return new ResponseQuestionSearchDto();
     }
 
     // 작성 게시글 목록
     @GetMapping("/member/posts")
-    public ResponseMemberQuestionsDto viewMemberPosts(int memberId) {
-        qBoardService.readMemberPosts(memberId);
+    public ResponseMemberQuestionsDto viewMemberPosts(RequestMemberQuestionsDto dto) {
+        qBoardService.readMemberPosts(new CRequestMemberQuestionsDto());
         return new ResponseMemberQuestionsDto();
     }
 }

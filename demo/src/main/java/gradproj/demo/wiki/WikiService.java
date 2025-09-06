@@ -1,7 +1,7 @@
 package gradproj.demo.wiki;
 
-import gradproj.demo.wiki.dto.CRequestPageUpdateDto;
-import gradproj.demo.wiki.dto.CResponsePageUpdateDto;
+import gradproj.demo.wiki.dto.service.request.*;
+import gradproj.demo.wiki.dto.service.response.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,12 +15,14 @@ public class WikiService {
         this.wikiRepository = wikiRepository;
     }
 
-    public void createPage(String pageName) {
+    public CResponsePageCreationDto createPage(CRequestPageCreationDto dto) {
         wikiRepository.save(new Page());
+        return new CResponsePageCreationDto();
     }
 
-    public void readPage(String pageName) {
-        wikiRepository.findById(pageName);
+    public CResponsePageReadDto readPage(CRequestPageReadDto dto) {
+        wikiRepository.findById(dto.getPageName());
+        return new CResponsePageReadDto();
     }
 
     public CResponsePageUpdateDto updatePage(CRequestPageUpdateDto dto) {
@@ -30,15 +32,18 @@ public class WikiService {
         return new CResponsePageUpdateDto();
     }
 
-    public void deletePage(String pageName) {
-        wikiRepository.deleteById(pageName);
+    public CResponsePageDeleteDto deletePage(CRequestPageDeleteDto dto) {
+        wikiRepository.deleteById(dto.getPageName());
+        return new CResponsePageDeleteDto();
     }
 
-    public void viewPageHistory(String pageName) {
+    public CResponsePageHistoryDto viewPageHistory(CRequestPageHistoryDto dto) {
         // 후추
+        return new CResponsePageHistoryDto();
     }
 
-    public void search(String keyword) {
+    public CResponsePageSearchDto search(CRequestPageSearchDto dto) {
         // 후추
+        return new CResponsePageSearchDto();
     }
 }

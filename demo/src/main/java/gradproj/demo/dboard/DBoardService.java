@@ -1,6 +1,7 @@
 package gradproj.demo.dboard;
 
 import gradproj.demo.dboard.dto.CRequestDiscussBoardCreationDto;
+import gradproj.demo.dboard.dto.CResponseDiscussBoardCreationDto;
 import gradproj.demo.dboard.dto.CResponseDiscussBoardListViewDto;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,9 @@ public class DBoardService {
         this.dBoardRepository = dBoardRepository;
     }
 
-    public void createBoard(CRequestDiscussBoardCreationDto dto) {
+    public CResponseDiscussBoardCreationDto createBoard(CRequestDiscussBoardCreationDto dto) {
         dBoardRepository.save(new DBoard());
+        return new CResponseDiscussBoardCreationDto();
     }
 
     public CResponseDiscussBoardListViewDto viewBoardList() {

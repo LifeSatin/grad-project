@@ -1,10 +1,9 @@
 package gradproj.demo.discussion;
 
-import gradproj.demo.discussion.dto.*;
-import gradproj.demo.member.Member;
+import gradproj.demo.discussion.dto.controller.request.*;
+import gradproj.demo.discussion.dto.controller.response.*;
+import gradproj.demo.discussion.dto.service.request.*;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 // 토론 게시판 Controller
 @RestController
@@ -19,8 +18,8 @@ public class DiscussionController {
 
     // 토론 게시판 게시글 목록 조회
     @GetMapping("/board")
-    public ResponseDiscussBoardReadDto viewDiscussBoard(@RequestParam int boardId) {
-        discussionService.viewDiscussionList(boardId);
+    public ResponseDiscussBoardReadDto viewDiscussBoard(RequestDiscussBoardReadDto dto) {
+        discussionService.viewDiscussionList(new CRequestDiscussListDto());
         return new ResponseDiscussBoardReadDto();
     }
 
@@ -33,8 +32,8 @@ public class DiscussionController {
 
     // 토론 게시글 조회
     @GetMapping("/board/post")
-    public ResponseDiscussReadDto readDiscussion(@RequestParam int postId) {
-        discussionService.readDiscussion(postId);
+    public ResponseDiscussReadDto readDiscussion(RequestDiscussReadDto dto) {
+        discussionService.readDiscussion(new CRequestDiscussReadDto());
         return new ResponseDiscussReadDto();
     }
 
@@ -47,22 +46,22 @@ public class DiscussionController {
 
     // 토론 게시글 삭제
     @DeleteMapping("/board/post")
-    public ResponseDiscussDeleteDto deleteDiscussion(@RequestParam int postId) {
-        discussionService.deleteDiscussion(postId);
+    public ResponseDiscussDeleteDto deleteDiscussion(RequestDiscussDeleteDto dto) {
+        discussionService.deleteDiscussion(new CRequestDiscussDeleteDto());
         return new ResponseDiscussDeleteDto();
     }
 
     // 토론 게시글 검색
     @GetMapping("/search")
-    public ResponseDiscussSearchDto searchDiscussion(String keyword) {
-        discussionService.search(keyword);
+    public ResponseDiscussSearchDto searchDiscussion(RequestDiscussSearchDto dto) {
+        discussionService.search(new CRequestDiscussSearchDto());
         return new ResponseDiscussSearchDto();
     }
 
     // 작성 게시글 목록
     @GetMapping("/member/posts")
-    public ResponseMemberDiscussListDto viewMemberPosts(int memberId) {
-        discussionService.readMemberPosts(memberId);
+    public ResponseMemberDiscussListDto viewMemberPosts(RequestMemberDiscussListDto dto) {
+        discussionService.readMemberPosts(new CRequestMemberDiscussDto());
         return new ResponseMemberDiscussListDto();
     }
 }

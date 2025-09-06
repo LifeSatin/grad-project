@@ -1,7 +1,7 @@
 package gradproj.demo.qboard;
 
-import gradproj.demo.qboard.dto.CRequestQuestionCreationDto;
-import gradproj.demo.qboard.dto.CRequestQuestionUpdateDto;
+import gradproj.demo.qboard.dto.service.request.*;
+import gradproj.demo.qboard.dto.service.response.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,27 +15,32 @@ public class QBoardService {
         this.qBoardRepository = qBoardRepository;
     }
 
-    public void createQuestion(CRequestQuestionCreationDto dto) {
+    public CResponseQuestionCreationDto createQuestion(CRequestQuestionCreationDto dto) {
         qBoardRepository.save(new Question());
+        return new CResponseQuestionCreationDto();
     }
 
-    public void readQuestion(long postId) {
-        qBoardRepository.findById(postId);
+    public CResponseQuestionReadDto readQuestion(CRequestQuestionReadDto dto) {
+        qBoardRepository.findById(dto.getPostId());
+        return new CResponseQuestionReadDto();
     }
 
-    public void updateQuestion(CRequestQuestionUpdateDto dto) {
+    public CResponseQuestionUpdateDto updateQuestion(CRequestQuestionUpdateDto dto) {
         qBoardRepository.findById(dto.postId);
+        return new CResponseQuestionUpdateDto();
     }
 
-    public void search(String keyword) {
-
+    public CResponseQuestionSearchDto search(CRequestQuestionSearchDto dto) {
+        return new CResponseQuestionSearchDto();
     }
 
-    public void viewQuestionList() {
+    public CResponseQuestionListDto viewQuestionList() {
         List<Question> all = qBoardRepository.findAll();
+        return new CResponseQuestionListDto();
     }
 
-    public void readMemberPosts(long memberId) {
+    public CResponseMemberQuestionsDto readMemberPosts(CRequestMemberQuestionsDto dto) {
         // 후추
+        return new CResponseMemberQuestionsDto();
     }
 }

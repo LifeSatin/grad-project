@@ -1,6 +1,9 @@
 package gradproj.demo.member;
 
-import gradproj.demo.member.dto.*;
+import gradproj.demo.member.dto.controller.request.*;
+import gradproj.demo.member.dto.controller.response.*;
+import gradproj.demo.member.dto.service.request.*;
+import gradproj.demo.member.dto.service.response.CResponseMemberReadDto;
 import org.springframework.web.bind.annotation.*;
 
 // 회원 관련 기능 Controller
@@ -16,15 +19,16 @@ public class MemberController {
     // 회원가입
     @PostMapping("/member")
     public ResponseMemberCreationDto createMember(RequestMemberCreationDto dto) {
-        memberService.createMember(new CRequestMemberCreationDto());
+        CRequestMemberCreationDto cdto = new CRequestMemberCreationDto(dto.getId(), dto.getPassword(), dto.getNickname());
+        memberService.createMember(cdto);
         return new ResponseMemberCreationDto();
     }
 
     // 회원 정보 조회
     @GetMapping("/member")
-    public ResponseMemberReadDto readMember(long memberId) {
-        memberService.readMemberInfo(memberId);
-        return new ResponseMemberReadDto();
+    public ResponseMemberReadDto readMember(RequestMemberReadDto dto) {
+        CResponseMemberReadDto cdto = memberService.readMemberInfo(new CRequestMemberReadDto(dto.getMemberId()));
+        return new ResponseMemberReadDto(cdto.getId(), cdto.getNickname(), cdto.getPower());
     }
 
     // 회원 닉네임 수정
@@ -43,29 +47,22 @@ public class MemberController {
 
     // 회원 탈퇴
     @DeleteMapping("/member")
-    public ResponseMemberDeleteDto deleteMapping(long memberId) {
-        memberService.deleteMember(memberId);
+    public ResponseMemberDeleteDto deleteMapping(RequestMemberDeleteDto dto) {
+        memberService.deleteMember(new CRequestMemberDeleteDto());
         return new ResponseMemberDeleteDto();
-    }
-
-    // 로그인
-    @GetMapping("/login")
-    public ResponseLoginDto login(RequestLoginDto dto) {
-        memberService.login(new CRequestLoginDto());
-        return new ResponseLoginDto();
     }
 
     // 즐겨찾기 게시판 목록 조회
     @GetMapping("/member/bookmark")
-    public ResponseMemberBookmarkReadDto readMemberBookmarks(long memberId) {
-        memberService.readMemberBookmarks(memberId);
+    public ResponseMemberBookmarkReadDto readMemberBookmarks(RequestMemberBookmarkReadDto dto) {
+        memberService.readMemberBookmarks(new CRequestMemberBookmarkReadDto());
         return new ResponseMemberBookmarkReadDto();
     }
 
     // 즐겨찾기 게시판 항목 수정
     @PutMapping("/member/bookmark")
-    public ResponseMemberBookmarkUpdateDto updateMemberBookmarks(long memberId) {
-        memberService.updateMemberBookmarks(memberId);
+    public ResponseMemberBookmarkUpdateDto updateMemberBookmarks(RequestMemberBookmarkUpdateDto dto) {
+        memberService.updateMemberBookmarks(new CRequestMemberBookmarkUpdateDto());
         return new ResponseMemberBookmarkUpdateDto();
     }
 }

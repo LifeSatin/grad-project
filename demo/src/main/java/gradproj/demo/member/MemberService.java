@@ -1,9 +1,7 @@
 package gradproj.demo.member;
 
-import gradproj.demo.member.dto.CRequestLoginDto;
-import gradproj.demo.member.dto.CRequestMemberCreationDto;
-import gradproj.demo.member.dto.CRequestMemberNicknameUpdateDto;
-import gradproj.demo.member.dto.CRequestMemberPasswordUpdateDto;
+import gradproj.demo.member.dto.service.request.*;
+import gradproj.demo.member.dto.service.response.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,43 +15,48 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public void createMember(CRequestMemberCreationDto dto) {
-        memberRepository.save(new Member());
+    // 회원 가입
+    public CResponseMemberCreationDto createMember(CRequestMemberCreationDto dto) {
+        memberRepository.save(new Member(dto.getId(), dto.getPassword(), dto.getNickname()));
+        return new CResponseMemberCreationDto();
     }
 
-    public void readMemberInfo(long memberId) {
-        memberRepository.findById(memberId);
+    public CResponseMemberReadDto readMemberInfo(CRequestMemberReadDto dto) {
+        Optional<Member> byId = memberRepository.findById(dto.getMemberId());
+        Member member = byId.orElseThrow();
+        return new CResponseMemberReadDto(member.getLoginId(), member.getNickname(), member.getPower());
     }
 
-    public void updateMemberNickname(CRequestMemberNicknameUpdateDto dto) {
+    public CResponseMemberNicknameUpdateDto updateMemberNickname(CRequestMemberNicknameUpdateDto dto) {
+        Optional<Member> byId = memberRepository.findById(dto.getMemberId());
+        Member member = byId.orElseThrow();
+        // 후추
+        return new CResponseMemberNicknameUpdateDto();
+    }
+
+    public CResponseMemberPasswordUpdateDto updateMemberPassword(CRequestMemberPasswordUpdateDto dto) {
         Optional<Member> byId = memberRepository.findById(dto.memberId);
         Member member = byId.orElseThrow();
         // 후추
+        return new CResponseMemberPasswordUpdateDto();
     }
 
-    public void updateMemberPassword(CRequestMemberPasswordUpdateDto dto) {
-        Optional<Member> byId = memberRepository.findById(dto.memberId);
+    public CResponseMemberDeleteDto deleteMember(CRequestMemberDeleteDto dto) {
+        memberRepository.deleteById(dto.getMemberId());
+        return new CResponseMemberDeleteDto();
+    }
+
+    public CResponseMemberBookmarkReadDto readMemberBookmarks(CRequestMemberBookmarkReadDto dto) {
+        Optional<Member> byId = memberRepository.findById(dto.getMemberId());
         Member member = byId.orElseThrow();
         // 후추
+        return new CResponseMemberBookmarkReadDto();
     }
 
-    public void deleteMember(long memberId) {
-        memberRepository.deleteById(memberId);
-    }
-
-    public void login(CRequestLoginDto dto) {
-        // 후추
-    }
-
-    public void readMemberBookmarks(long memberId) {
-        Optional<Member> byId = memberRepository.findById(memberId);
+    public CResponseMemberBookmarkUpdateDto updateMemberBookmarks(CRequestMemberBookmarkUpdateDto dto) {
+        Optional<Member> byId = memberRepository.findById(dto.getMemberId());
         Member member = byId.orElseThrow();
         // 후추
-    }
-
-    public void updateMemberBookmarks(long memberId) {
-        Optional<Member> byId = memberRepository.findById(memberId);
-        Member member = byId.orElseThrow();
-        // 후추
+        return new CResponseMemberBookmarkUpdateDto();
     }
 }

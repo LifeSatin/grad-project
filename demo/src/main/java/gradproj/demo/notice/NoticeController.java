@@ -1,6 +1,8 @@
 package gradproj.demo.notice;
 
-import gradproj.demo.notice.dto.*;
+import gradproj.demo.notice.dto.controller.request.*;
+import gradproj.demo.notice.dto.controller.response.*;
+import gradproj.demo.notice.dto.service.request.*;
 import org.springframework.web.bind.annotation.*;
 
 // 공지사항 Controller
@@ -30,8 +32,8 @@ public class NoticeController {
 
     // 공지사항 조회
     @GetMapping("/post")
-    public ResponseNoticeReadDto readNotice(@RequestParam long postId) {
-        noticeService.readNotice(postId);
+    public ResponseNoticeReadDto readNotice(RequestNoticeReadDto dto) {
+        noticeService.readNotice(new CRequestNoticeReadDto());
         return new ResponseNoticeReadDto();
     }
 
@@ -44,15 +46,15 @@ public class NoticeController {
 
     // 공지사항 삭제
     @DeleteMapping("/post")
-    public ResponseNoticeDeleteDto deleteNotice(long postId) {
-        noticeService.deleteNotice(postId);
+    public ResponseNoticeDeleteDto deleteNotice(RequestNoticeDeleteDto dto) {
+        noticeService.deleteNotice(new CRequestNoticeDeleteDto());
         return new ResponseNoticeDeleteDto();
     }
 
     // 공지사항 검색
     @GetMapping("/search")
-    public ResponseNoticeSearchDto searchNotice(String keyword) {
-        noticeService.search(keyword);
+    public ResponseNoticeSearchDto searchNotice(RequestNoticeSearchDto dto) {
+        noticeService.search(new CRequestNoticeSearchDto());
         return new ResponseNoticeSearchDto();
     }
 }

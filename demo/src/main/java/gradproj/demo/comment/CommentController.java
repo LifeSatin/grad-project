@@ -1,6 +1,8 @@
 package gradproj.demo.comment;
 
-import gradproj.demo.comment.dto.*;
+import gradproj.demo.comment.dto.controller.request.*;
+import gradproj.demo.comment.dto.controller.response.*;
+import gradproj.demo.comment.dto.service.request.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,8 +23,8 @@ public class CommentController {
 
     // 댓글 조회
     @RequestMapping("/comments")
-    public ResponseCommentReadDto readComment(@RequestParam long postId) {
-        commentService.readComments(postId);
+    public ResponseCommentReadDto readComment(RequestCommentReadDto dto) {
+        commentService.readComments(new CRequestCommentReadDto());
         return new ResponseCommentReadDto();
     }
 
@@ -35,15 +37,15 @@ public class CommentController {
 
     // 댓글 삭제
     @DeleteMapping("/comments")
-    public ResponseCommentDeleteDto deleteComment(@RequestParam int postId) {
-        commentService.deleteComment(postId);
+    public ResponseCommentDeleteDto deleteComment(RequestCommentDeleteDto dto) {
+        commentService.deleteComment(new CRequestCommentDeleteDto());
         return new ResponseCommentDeleteDto();
     }
 
     // 작성 댓글 목록
     @GetMapping("/member/comments")
-    public ResponseCommentReadDto viewMemberComments(int memberId) {
-        commentService.readMemberComments(memberId);
-        return new ResponseCommentReadDto();
+    public ResponseMemberCommentsDto viewMemberComments(RequestMemberCommentsDto dto) {
+        commentService.readMemberComments(new CRequestMemberCommentsDto());
+        return new ResponseMemberCommentsDto();
     }
 }

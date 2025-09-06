@@ -1,10 +1,7 @@
 package gradproj.demo.comment;
 
-import gradproj.demo.comment.dto.CRequestCommentCreationDto;
-import gradproj.demo.comment.dto.CRequestCommentUpdateDto;
-import gradproj.demo.comment.dto.CResponseCommentReadDto;
-import gradproj.demo.comment.dto.CResponseMemberCommentsDto;
-import gradproj.demo.member.Member;
+import gradproj.demo.comment.dto.service.request.*;
+import gradproj.demo.comment.dto.service.response.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,29 +15,32 @@ public class CommentService {
         this.commentRepository = commentRepository;
     }
 
-    public void createComment(CRequestCommentCreationDto dto) {
+    public CResponseCommentCreationDto createComment(CRequestCommentCreationDto dto) {
         commentRepository.save(new Comment());
+        return new CResponseCommentCreationDto();
     }
 
-    public CResponseCommentReadDto readComments(long postId) {
-        Optional<Comment> byId = commentRepository.findById(postId);
+    public CResponseCommentReadDto readComments(CRequestCommentReadDto dto) {
+        Optional<Comment> byId = commentRepository.findById(dto.getPostId());
         Comment comment = byId.orElseThrow();
         //후추
         return new CResponseCommentReadDto();
     }
 
-    public void updateComment(CRequestCommentUpdateDto dto) {
+    public CResponseCommentUpdateDto updateComment(CRequestCommentUpdateDto dto) {
         Optional<Comment> byId = commentRepository.findById(dto.postId);
         Comment comment = byId.orElseThrow();
         //후추
+        return new CResponseCommentUpdateDto();
     }
 
-    public void deleteComment(long postId) {
-        commentRepository.deleteById(postId);
+    public CResponseCommentDeleteDto deleteComment(CRequestCommentDeleteDto dto) {
+        commentRepository.deleteById(dto.getPostId());
+        return new CResponseCommentDeleteDto();
     }
 
-    public CResponseMemberCommentsDto readMemberComments(long memberId) {
-        Optional<Comment> byId = commentRepository.findById(memberId);
+    public CResponseMemberCommentsDto readMemberComments(CRequestMemberCommentsDto dto) {
+        Optional<Comment> byId = commentRepository.findById(dto.getMemberId());
         // 후추
         return new CResponseMemberCommentsDto();
     }

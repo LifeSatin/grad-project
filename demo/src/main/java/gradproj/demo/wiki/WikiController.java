@@ -1,6 +1,8 @@
 package gradproj.demo.wiki;
 
-import gradproj.demo.wiki.dto.*;
+import gradproj.demo.wiki.dto.controller.request.*;
+import gradproj.demo.wiki.dto.controller.response.*;
+import gradproj.demo.wiki.dto.service.request.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.DeleteExchange;
 
@@ -17,15 +19,15 @@ public class WikiController {
 
     // 위키 페이지 생성
     @PostMapping
-    public ResponsePageCreationDto createPage(String pageName) {
-        wikiService.createPage(pageName);
+    public ResponsePageCreationDto createPage(RequestPageCreationDto dto) {
+        wikiService.createPage(new CRequestPageCreationDto());
         return new ResponsePageCreationDto();
     }
 
     // 위키 문서 조회
     @GetMapping("/{pageName}")
-    public ResponsePageReadDto readPage(String pageName) {
-        wikiService.readPage(pageName);
+    public ResponsePageReadDto readPage(RequestPageReadDto dto) {
+        wikiService.readPage(new CRequestPageReadDto());
         return new ResponsePageReadDto();
     }
 
@@ -38,22 +40,22 @@ public class WikiController {
 
     // 위키 문서 삭제
     @DeleteExchange("/{pageName}")
-    public ResponsePageDeleteDto deletePage(String pageName) {
-        wikiService.deletePage(pageName);
+    public ResponsePageDeleteDto deletePage(RequestPageDeleteDto dto) {
+        wikiService.deletePage(new CRequestPageDeleteDto());
         return new ResponsePageDeleteDto();
     }
 
     // 위키 문서 수정이력 조회
     @GetMapping("/{pageName}/history")
-    public ResponsePageHistoryDto viewPageHistory(String pageName) {
-        wikiService.viewPageHistory(pageName);
+    public ResponsePageHistoryDto viewPageHistory(RequestPageHistoryDto dto) {
+        wikiService.viewPageHistory(new CRequestPageHistoryDto());
         return new ResponsePageHistoryDto();
     }
 
     // 위키 문서 검색
     @GetMapping("/search")
-    public ResponsePageSearchDto searchPage(String keyword) {
-        wikiService.search(keyword);
+    public ResponsePageSearchDto searchPage(RequestPageSearchDto dto) {
+        wikiService.search(new CRequestPageSearchDto());
         return new ResponsePageSearchDto();
     }
 }

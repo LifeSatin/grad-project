@@ -1,7 +1,7 @@
 package gradproj.demo.discussion;
 
-import gradproj.demo.discussion.dto.*;
-import gradproj.demo.member.Member;
+import gradproj.demo.discussion.dto.service.request.*;
+import gradproj.demo.discussion.dto.service.response.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,36 +16,41 @@ public class DiscussionService {
         this.discussionRepository = dBoardRepository;
     }
 
-    public void viewDiscussionList(long boardId) {
+    public CResponseDiscussListDto viewDiscussionList(CRequestDiscussListDto dto) {
         List<Discussion> all = discussionRepository.findAll();
         // 후추
+        return new CResponseDiscussListDto();
     }
 
-    public void createDiscussion(CRequestDiscussCreationDto dto) {
+    public CResponseDiscussCreationDto createDiscussion(CRequestDiscussCreationDto dto) {
         discussionRepository.save(new Discussion());
+        return new CResponseDiscussCreationDto();
     }
 
-    public CResponseDiscussReadDto readDiscussion(long postId) {
-        Optional<Discussion> byId = discussionRepository.findById(postId);
+    public CResponseDiscussReadDto readDiscussion(CRequestDiscussReadDto dto) {
+        Optional<Discussion> byId = discussionRepository.findById(dto.getPostId());
         Discussion discussion = byId.orElseThrow();
         return new CResponseDiscussReadDto();
     }
 
-    public void updateDiscussion(CRequestDiscussUpdateDto dto) {
+    public CResponseDiscussUpdateDto updateDiscussion(CRequestDiscussUpdateDto dto) {
         Optional<Discussion> byId = discussionRepository.findById(dto.postId);
         Discussion discussion = byId.orElseThrow();
         // 후추
+        return new CResponseDiscussUpdateDto();
     }
 
-    public void deleteDiscussion(long postId) {
-        discussionRepository.deleteById(postId);
+    public CResponseDiscussDeleteDto deleteDiscussion(CRequestDiscussDeleteDto dto) {
+        discussionRepository.deleteById(dto.getPostId());
+        return new CResponseDiscussDeleteDto();
     }
 
-    public void search(String keyword) {
-
+    public CResponseDiscussSearchDto search(CRequestDiscussSearchDto dto) {
+        return new CResponseDiscussSearchDto();
     }
 
-    public void readMemberPosts(long memberId) {
+    public CResponseMemberDiscussDto readMemberPosts(CRequestMemberDiscussDto dto) {
         // 후추
+        return new CResponseMemberDiscussDto();
     }
 }

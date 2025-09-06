@@ -30,14 +30,16 @@ public class MemberService {
     public CResponseMemberNicknameUpdateDto updateMemberNickname(CRequestMemberNicknameUpdateDto dto) {
         Optional<Member> byId = memberRepository.findById(dto.getMemberId());
         Member member = byId.orElseThrow();
-        // 후추
+        member.changeNickname(dto.getNickname());
+        memberRepository.save(member);
         return new CResponseMemberNicknameUpdateDto();
     }
 
     public CResponseMemberPasswordUpdateDto updateMemberPassword(CRequestMemberPasswordUpdateDto dto) {
-        Optional<Member> byId = memberRepository.findById(dto.memberId);
+        Optional<Member> byId = memberRepository.findById(dto.getMemberId());
         Member member = byId.orElseThrow();
-        // 후추
+        member.changePassword(dto.getPassword());
+        memberRepository.save(member);
         return new CResponseMemberPasswordUpdateDto();
     }
 

@@ -8,6 +8,10 @@ import jakarta.persistence.Id;
 public class Question {
     @Id @GeneratedValue
     private long id;
+    private String title;
+    private String content;
+    private long authorId;
+    private String state;
 
     public Question() {
 

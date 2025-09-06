@@ -34,35 +34,35 @@ public class MemberController {
     // 회원 닉네임 수정
     @PatchMapping("/member/nickname")
     public ResponseMemberNicknameUpdateDto editMemberNickname(RequestMemberNicknameUpdateDto dto) {
-        memberService.updateMemberNickname(new CRequestMemberNicknameUpdateDto());
+        memberService.updateMemberNickname(new CRequestMemberNicknameUpdateDto(dto.getMemberId(), dto.getNewNickname()));
         return new ResponseMemberNicknameUpdateDto();
     }
 
     // 비밀번호 수정
     @PatchMapping("/member/password")
     public ResponseMemberPasswordUpdateDto editMemberPassword(RequestMemberPasswordUpdateDto dto) {
-        memberService.updateMemberPassword(new CRequestMemberPasswordUpdateDto());
+        memberService.updateMemberPassword(new CRequestMemberPasswordUpdateDto(dto.getMemberId(), dto.getNewPassword()));
         return new ResponseMemberPasswordUpdateDto();
     }
 
     // 회원 탈퇴
     @DeleteMapping("/member")
     public ResponseMemberDeleteDto deleteMapping(RequestMemberDeleteDto dto) {
-        memberService.deleteMember(new CRequestMemberDeleteDto());
+        memberService.deleteMember(new CRequestMemberDeleteDto(dto.getMemberId()));
         return new ResponseMemberDeleteDto();
     }
 
     // 즐겨찾기 게시판 목록 조회
     @GetMapping("/member/bookmark")
     public ResponseMemberBookmarkReadDto readMemberBookmarks(RequestMemberBookmarkReadDto dto) {
-        memberService.readMemberBookmarks(new CRequestMemberBookmarkReadDto());
+        memberService.readMemberBookmarks(new CRequestMemberBookmarkReadDto(dto.getMemberId()));
         return new ResponseMemberBookmarkReadDto();
     }
 
     // 즐겨찾기 게시판 항목 수정
     @PutMapping("/member/bookmark")
     public ResponseMemberBookmarkUpdateDto updateMemberBookmarks(RequestMemberBookmarkUpdateDto dto) {
-        memberService.updateMemberBookmarks(new CRequestMemberBookmarkUpdateDto());
+        memberService.updateMemberBookmarks(new CRequestMemberBookmarkUpdateDto(dto.getMemberId()));
         return new ResponseMemberBookmarkUpdateDto();
     }
 }

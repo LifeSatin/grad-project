@@ -27,4 +27,12 @@ public class Member {
         this.nickname = nickname;
         this.power = "regular";
     }
+
+    public void changePassword(String password) {
+        this.password = password;
+    }
+
+    public void changeNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }

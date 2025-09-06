@@ -5,4 +5,8 @@ import lombok.Getter;
 @Getter
 public class RequestMemberBookmarkReadDto {
     public long memberId;
+
+    public RequestMemberBookmarkReadDto(long memberId) {
+        this.memberId = memberId;
+    }
 }

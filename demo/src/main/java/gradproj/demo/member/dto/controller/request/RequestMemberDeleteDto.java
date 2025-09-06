@@ -5,4 +5,8 @@ import lombok.Getter;
 @Getter
 public class RequestMemberDeleteDto {
     public long memberId;
+
+    public RequestMemberDeleteDto(long memberId) {
+        this.memberId = memberId;
+    }
 }

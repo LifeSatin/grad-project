@@ -4,5 +4,11 @@ import lombok.Getter;
 
 @Getter
 public class CRequestCommentUpdateDto {
-    public long postId;
+    public long commentId;
+    public String content;
+
+    public CRequestCommentUpdateDto(long commentId, String content) {
+        this.commentId = commentId;
+        this.content = content;
+    }
 }

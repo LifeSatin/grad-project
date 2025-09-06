@@ -5,4 +5,8 @@ import lombok.Getter;
 @Getter
 public class CRequestDiscussListDto {
     public long boardId;
+
+    public CRequestDiscussListDto(long boardId) {
+        this.boardId = boardId;
+    }
 }

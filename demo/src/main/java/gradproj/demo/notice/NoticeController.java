@@ -3,6 +3,8 @@ package gradproj.demo.notice;
 import gradproj.demo.notice.dto.controller.request.*;
 import gradproj.demo.notice.dto.controller.response.*;
 import gradproj.demo.notice.dto.service.request.*;
+import gradproj.demo.notice.dto.service.response.CResponseNoticeListDto;
+import gradproj.demo.notice.dto.service.response.CResponseNoticeReadDto;
 import org.springframework.web.bind.annotation.*;
 
 // 공지사항 Controller
@@ -16,42 +18,65 @@ public class NoticeController {
         this.noticeService = noticeService;
     }
 
-    // 공지사항 목록 조회
+    /**
+     * 구현 완료, 테스트 미진행
+     * @return List<id, title>
+     */
     @GetMapping
     public ResponseNoticeListDto viewNoticeList() {
-        noticeService.viewNoticeList();
-        return new ResponseNoticeListDto();
+        CResponseNoticeListDto cdto = noticeService.viewNoticeList();
+        return new ResponseNoticeListDto(cdto.getNoticeList());
     }
 
-    // 공지사항 작성
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param title, content, date
+     * @return message
+     */
     @PostMapping
     public ResponseNoticeCreationDto createNotice(RequestNoticeCreationDto dto) {
-        noticeService.createNotice(new CRequestNoticeCreationDto());
+        noticeService.createNotice(new CRequestNoticeCreationDto(dto.getTitle(), dto.getContent(), dto.getDate()));
         return new ResponseNoticeCreationDto();
     }
 
-    // 공지사항 조회
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param postId
+     * @return title, content, date
+     */
     @GetMapping("/post")
     public ResponseNoticeReadDto readNotice(RequestNoticeReadDto dto) {
-        noticeService.readNotice(new CRequestNoticeReadDto());
-        return new ResponseNoticeReadDto();
+        CResponseNoticeReadDto cdto = noticeService.readNotice(new CRequestNoticeReadDto());
+        return new ResponseNoticeReadDto(cdto.getTitle(), cdto.getContent());
     }
 
-    // 공지사항 수정
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param postId, title, content
+     * @return message
+     */
     @PatchMapping("/post")
     public ResponseNoticeUpdateDto updateNotice(RequestNoticeUpdateDto dto) {
-        noticeService.updateNotice(new CRequestNoticeUpdateDto());
+        noticeService.updateNotice(new CRequestNoticeUpdateDto(dto.getPostId(), dto.getTitle(), dto.getContent()));
         return new ResponseNoticeUpdateDto();
     }
 
-    // 공지사항 삭제
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param postId
+     * @return message
+     */
     @DeleteMapping("/post")
     public ResponseNoticeDeleteDto deleteNotice(RequestNoticeDeleteDto dto) {
-        noticeService.deleteNotice(new CRequestNoticeDeleteDto());
+        noticeService.deleteNotice(new CRequestNoticeDeleteDto(dto.getPostId()));
         return new ResponseNoticeDeleteDto();
     }
 
-    // 공지사항 검색
+    /**
+     *
+     * @param dto
+     * @return
+     */
     @GetMapping("/search")
     public ResponseNoticeSearchDto searchNotice(RequestNoticeSearchDto dto) {
         noticeService.search(new CRequestNoticeSearchDto());

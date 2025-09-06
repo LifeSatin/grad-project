@@ -1,9 +1,6 @@
 package gradproj.demo.dboard;
 
-import gradproj.demo.dboard.dto.CRequestDiscussBoardCreationDto;
-import gradproj.demo.dboard.dto.RequestDiscussBoardCreationDto;
-import gradproj.demo.dboard.dto.ResponseDiscussBoardCreationDto;
-import gradproj.demo.dboard.dto.ResponseDiscussBoardListViewDto;
+import gradproj.demo.dboard.dto.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,18 +13,24 @@ public class DBoardController {
         this.dBoardService = dBoardService;
     }
 
-    // 토론 게시판 생성
+    /**
+     * 구현 완료
+     * @param originalPostId, boardName
+     * @return message
+     */
     @PostMapping
     public ResponseDiscussBoardCreationDto createDiscussBoard(RequestDiscussBoardCreationDto dto) {
-        dBoardService.createBoard(new CRequestDiscussBoardCreationDto());
+        dBoardService.createBoard(new CRequestDiscussBoardCreationDto(dto.getBoardName()));
         return new ResponseDiscussBoardCreationDto();
     }
 
-    // 토론 게시판 목록 조회
+    /**
+     * 구현 완료
+     * @return boardList
+     */
     @GetMapping
     public ResponseDiscussBoardListViewDto viewDiscussBoardList() {
-        dBoardService.viewBoardList();
-        return new ResponseDiscussBoardListViewDto();
+        CResponseDiscussBoardListViewDto cdto = dBoardService.viewBoardList();
+        return new ResponseDiscussBoardListViewDto(cdto.getBoardList());
     }
-
 }

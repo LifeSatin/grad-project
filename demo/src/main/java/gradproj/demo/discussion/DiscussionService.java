@@ -1,5 +1,6 @@
 package gradproj.demo.discussion;
 
+import gradproj.demo.discussion.dto.DiscussionDto;
 import gradproj.demo.discussion.dto.service.request.*;
 import gradproj.demo.discussion.dto.service.response.*;
 import org.springframework.stereotype.Service;
@@ -11,32 +12,34 @@ import java.util.Optional;
 public class DiscussionService {
 
     private final DiscussionRepository discussionRepository;
+    private final DiscussionQueryRepository discussionQueryRepository;
 
-    public DiscussionService(DiscussionRepository dBoardRepository) {
-        this.discussionRepository = dBoardRepository;
+    public DiscussionService(DiscussionRepository discussionRepository, DiscussionQueryRepository discussionQueryRepository) {
+        this.discussionRepository = discussionRepository;
+        this.discussionQueryRepository = discussionQueryRepository;
     }
 
     public CResponseDiscussListDto viewDiscussionList(CRequestDiscussListDto dto) {
-        List<Discussion> all = discussionRepository.findAll();
-        // 후추
-        return new CResponseDiscussListDto();
+        List<DiscussionDto> all = discussionQueryRepository.getDiscussionList(dto.getBoardId());
+        return new CResponseDiscussListDto(all);
     }
 
     public CResponseDiscussCreationDto createDiscussion(CRequestDiscussCreationDto dto) {
-        discussionRepository.save(new Discussion());
+        discussionRepository.save(new Discussion(dto.getTitle(), dto.getContent(), dto.getBoardId(), dto.getAuthorId()));
         return new CResponseDiscussCreationDto();
     }
 
     public CResponseDiscussReadDto readDiscussion(CRequestDiscussReadDto dto) {
         Optional<Discussion> byId = discussionRepository.findById(dto.getPostId());
         Discussion discussion = byId.orElseThrow();
-        return new CResponseDiscussReadDto();
+        return new CResponseDiscussReadDto(discussion.getTitle(), discussion.getContent(), discussion.getAuthorId());
     }
 
     public CResponseDiscussUpdateDto updateDiscussion(CRequestDiscussUpdateDto dto) {
         Optional<Discussion> byId = discussionRepository.findById(dto.postId);
         Discussion discussion = byId.orElseThrow();
-        // 후추
+        discussion.update(dto.getTitle(), dto.getContent());
+        discussionRepository.save(discussion);
         return new CResponseDiscussUpdateDto();
     }
 
@@ -50,7 +53,7 @@ public class DiscussionService {
     }
 
     public CResponseMemberDiscussDto readMemberPosts(CRequestMemberDiscussDto dto) {
-        // 후추
-        return new CResponseMemberDiscussDto();
+        List<DiscussionDto> memberDiscussionList = discussionQueryRepository.getMemberDiscussionList(dto.getMemberId());
+        return new CResponseMemberDiscussDto(memberDiscussionList);
     }
 }

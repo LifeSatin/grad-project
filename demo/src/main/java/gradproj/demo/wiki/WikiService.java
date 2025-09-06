@@ -16,19 +16,21 @@ public class WikiService {
     }
 
     public CResponsePageCreationDto createPage(CRequestPageCreationDto dto) {
-        wikiRepository.save(new Page());
+        wikiRepository.save(new Page(dto.getPageName()));
         return new CResponsePageCreationDto();
     }
 
     public CResponsePageReadDto readPage(CRequestPageReadDto dto) {
-        wikiRepository.findById(dto.getPageName());
-        return new CResponsePageReadDto();
+        Optional<Page> byId = wikiRepository.findById(dto.getPageName());
+        Page page = byId.orElseThrow();
+        return new CResponsePageReadDto(page.getPageName(), page.getContent());
     }
 
     public CResponsePageUpdateDto updatePage(CRequestPageUpdateDto dto) {
         Optional<Page> byId = wikiRepository.findById(dto.pageName);
         Page page = byId.orElseThrow();
-        // 후추
+        page.update(dto.getContent());
+        wikiRepository.save(page);
         return new CResponsePageUpdateDto();
     }
 

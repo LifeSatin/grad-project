@@ -8,5 +8,10 @@ import java.time.LocalDateTime;
 public class RequestPageUpdateDto {
     public String pageName;
     public String content;
-    public LocalDateTime date;
+    //public LocalDateTime date;
+
+    public RequestPageUpdateDto(String pageName, String content) {
+        this.pageName = pageName;
+        this.content = content;
+    }
 }

@@ -5,4 +5,8 @@ import lombok.Getter;
 @Getter
 public class CRequestMemberQuestionsDto {
     public long memberId;
+
+    public CRequestMemberQuestionsDto(long memberId) {
+        this.memberId = memberId;
+    }
 }

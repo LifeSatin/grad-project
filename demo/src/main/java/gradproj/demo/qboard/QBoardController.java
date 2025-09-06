@@ -3,6 +3,9 @@ package gradproj.demo.qboard;
 import gradproj.demo.qboard.dto.controller.request.*;
 import gradproj.demo.qboard.dto.controller.response.*;
 import gradproj.demo.qboard.dto.service.request.*;
+import gradproj.demo.qboard.dto.service.response.CResponseMemberQuestionsDto;
+import gradproj.demo.qboard.dto.service.response.CResponseQuestionListDto;
+import gradproj.demo.qboard.dto.service.response.CResponseQuestionReadDto;
 import org.springframework.web.bind.annotation.*;
 
 // 질문 게시판 Controller
@@ -16,47 +19,70 @@ public class QBoardController {
         this.qBoardService = qBoardService;
     }
 
-    // 질문 목록 조회
+    /**
+     * 구현 완료, 테스트 미진행
+     * @return List<postId, title, authorId>
+     */
     @GetMapping
     public ResponseQuestionListDto viewQuestionBoard() {
-        qBoardService.viewQuestionList();
-        return new ResponseQuestionListDto();
+        CResponseQuestionListDto cdto = qBoardService.viewQuestionList();
+        return new ResponseQuestionListDto(cdto.getQuestionList());
     }
 
-    // 질문 작성
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param title, content, authorId
+     * @return message
+     */
     @PostMapping
     public ResponseQuestionCreationDto createQuestion(RequestQuestionCreationDto dto) {
-        qBoardService.createQuestion(new CRequestQuestionCreationDto());
+        qBoardService.createQuestion(new CRequestQuestionCreationDto(dto.getTitle(), dto.getContent(), dto.getAuthorId()));
         return new ResponseQuestionCreationDto();
     }
 
-    // 질문 조회
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param postId
+     * @return title, content, authorId
+     */
     @GetMapping("/post")
     public ResponseQuestionReadDto readQuestion(RequestQuestionReadDto dto) {
-        qBoardService.readQuestion(new CRequestQuestionReadDto());
-        return new ResponseQuestionReadDto();
+        CResponseQuestionReadDto cdto = qBoardService.readQuestion(new CRequestQuestionReadDto(dto.getPostId()));
+        return new ResponseQuestionReadDto(cdto.getTitle(), cdto.getContent(), cdto.getAuthorId());
     }
 
-    // 질문 수정
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param postId
+     * @return message
+     */
     @PatchMapping("/post")
     public ResponseQuestionUpdateDto updateQuestion(RequestQuestionUpdateDto dto) {
-        qBoardService.updateQuestion(new CRequestQuestionUpdateDto());
+        qBoardService.updateQuestion(new CRequestQuestionUpdateDto(dto.getPostId(), dto.getTitle(), dto.getContent()));
         return new ResponseQuestionUpdateDto();
     }
 
     // 질문 삭제: 미지원
 
-    // 질문 검색
+    /**
+     *
+     * @param dto
+     * @return
+     */
     @GetMapping("/search")
     public ResponseQuestionSearchDto searchQuestion(RequestQuestionSearchDto dto) {
         qBoardService.search(new CRequestQuestionSearchDto());
         return new ResponseQuestionSearchDto();
     }
 
-    // 작성 게시글 목록
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param memberId
+     * @return List<title, content, memberId>
+     */
     @GetMapping("/member/posts")
     public ResponseMemberQuestionsDto viewMemberPosts(RequestMemberQuestionsDto dto) {
-        qBoardService.readMemberPosts(new CRequestMemberQuestionsDto());
-        return new ResponseMemberQuestionsDto();
+        CResponseMemberQuestionsDto cdto = qBoardService.readMemberPosts(new CRequestMemberQuestionsDto(dto.getMemberId()));
+        return new ResponseMemberQuestionsDto(cdto.getMemberQuestionList());
     }
 }

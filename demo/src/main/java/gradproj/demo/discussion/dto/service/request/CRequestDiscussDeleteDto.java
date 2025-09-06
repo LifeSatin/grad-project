@@ -5,4 +5,8 @@ import lombok.Getter;
 @Getter
 public class CRequestDiscussDeleteDto {
     public long postId;
+
+    public CRequestDiscussDeleteDto(long postId) {
+        this.postId = postId;
+    }
 }

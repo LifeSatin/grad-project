@@ -1,35 +1,40 @@
 package gradproj.demo.notice;
 
+import gradproj.demo.notice.dto.NoticeDto;
 import gradproj.demo.notice.dto.service.request.*;
 import gradproj.demo.notice.dto.service.response.*;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class NoticeService {
 
     private final NoticeRepository noticeRepository;
+    private final NoticeQueryRepository noticeQueryRepository;
 
-    public NoticeService(NoticeRepository noticeRepository) {
+    public NoticeService(NoticeRepository noticeRepository, NoticeQueryRepository noticeQueryRepository) {
         this.noticeRepository = noticeRepository;
+        this.noticeQueryRepository = noticeQueryRepository;
     }
 
     public CResponseNoticeCreationDto createNotice(CRequestNoticeCreationDto dto) {
-        noticeRepository.save(new Notice());
+        noticeRepository.save(new Notice(dto.getTitle(), dto.getContent()));
         return new CResponseNoticeCreationDto();
     }
 
     public CResponseNoticeReadDto readNotice(CRequestNoticeReadDto dto) {
-        noticeRepository.findById(dto.getPostId());
-        // response dto 만들어야됨 ㅠㅠ
-        return new CResponseNoticeReadDto();
+        Optional<Notice> byId = noticeRepository.findById(dto.getPostId());
+        Notice notice = byId.orElseThrow();
+        return new CResponseNoticeReadDto(notice.getTitle(), notice.getContent());
     }
 
     public CResponseNoticeUpdateDto updateNotice(CRequestNoticeUpdateDto dto) {
         Optional<Notice> byId = noticeRepository.findById(dto.getPostId());
         Notice notice = byId.orElseThrow();
-        // 후추
+        notice.update(dto.getTitle(), dto.getContent());
+        noticeRepository.save(notice);
         return new CResponseNoticeUpdateDto();
     }
 
@@ -39,8 +44,8 @@ public class NoticeService {
     }
 
     public CResponseNoticeListDto viewNoticeList() {
-        // 후추
-        return new CResponseNoticeListDto();
+        List<NoticeDto> noticeList = noticeQueryRepository.getNoticeList();
+        return new CResponseNoticeListDto(noticeList);
     }
 
     public CResponseNoticeSearchDto search(CRequestNoticeSearchDto dto) {

@@ -3,9 +3,12 @@ package gradproj.demo.discussion;
 import gradproj.demo.discussion.dto.controller.request.*;
 import gradproj.demo.discussion.dto.controller.response.*;
 import gradproj.demo.discussion.dto.service.request.*;
+import gradproj.demo.discussion.dto.service.response.CResponseDiscussListDto;
+import gradproj.demo.discussion.dto.service.response.CResponseDiscussReadDto;
+import gradproj.demo.discussion.dto.service.response.CResponseMemberDiscussDto;
 import org.springframework.web.bind.annotation.*;
 
-// 토론 게시판 Controller
+// 사실상 완료
 @RestController
 @RequestMapping("/discuss")
 public class DiscussionController {
@@ -16,52 +19,79 @@ public class DiscussionController {
         this.discussionService = dBoardService;
     }
 
-    // 토론 게시판 게시글 목록 조회
+    /**
+     * 구현 완료
+     * @param boardId
+     * @return discussList
+     */
     @GetMapping("/board")
-    public ResponseDiscussBoardReadDto viewDiscussBoard(RequestDiscussBoardReadDto dto) {
-        discussionService.viewDiscussionList(new CRequestDiscussListDto());
-        return new ResponseDiscussBoardReadDto();
+    public ResponseDiscussListDto viewDiscussBoard(RequestDiscussListDto dto) {
+        CResponseDiscussListDto cdto = discussionService.viewDiscussionList(new CRequestDiscussListDto(dto.getBoardId()));
+        return new ResponseDiscussListDto(cdto.getDiscussList());
     }
 
-    // 토론 게시글 작성
+    /**
+     * 구현 완료
+     * @param title, content, boardId, authorId
+     * @return
+     */
     @PostMapping("/board/post")
     public ResponseDiscussCreationDto createDiscussion(RequestDiscussCreationDto dto) {
-        discussionService.createDiscussion(new CRequestDiscussCreationDto());
+        discussionService.createDiscussion(new CRequestDiscussCreationDto(dto.title, dto.content, dto.boardId, dto.authorId));
         return new ResponseDiscussCreationDto();
     }
 
-    // 토론 게시글 조회
+    /**
+     * author까지 추가하기
+     * @param postId
+     * @return
+     */
     @GetMapping("/board/post")
     public ResponseDiscussReadDto readDiscussion(RequestDiscussReadDto dto) {
-        discussionService.readDiscussion(new CRequestDiscussReadDto());
-        return new ResponseDiscussReadDto();
+        CResponseDiscussReadDto cdto = discussionService.readDiscussion(new CRequestDiscussReadDto(dto.getPostId()));
+        return new ResponseDiscussReadDto(cdto.getTitle(), cdto.getContent(), cdto.getAuthorId());
     }
 
-    // 토론 게시글 수정
+    /**
+     * 구현 완료
+     * @param postId, title, content
+     * @return
+     */
     @PatchMapping("/board/post")
     public ResponseDiscussUpdateDto updateDiscussion(RequestDiscussUpdateDto dto) {
-        discussionService.updateDiscussion(new CRequestDiscussUpdateDto());
+        discussionService.updateDiscussion(new CRequestDiscussUpdateDto(dto.getPostId(), dto.getTitle(), dto.getContent()));
         return new ResponseDiscussUpdateDto();
     }
 
-    // 토론 게시글 삭제
+    /**
+     * 구현 완료
+     * @param postId
+     * @return
+     */
     @DeleteMapping("/board/post")
     public ResponseDiscussDeleteDto deleteDiscussion(RequestDiscussDeleteDto dto) {
-        discussionService.deleteDiscussion(new CRequestDiscussDeleteDto());
+        discussionService.deleteDiscussion(new CRequestDiscussDeleteDto(dto.getPostId()));
         return new ResponseDiscussDeleteDto();
     }
 
-    // 토론 게시글 검색
+    /**
+     * @param keyword
+     * @return
+     */
     @GetMapping("/search")
     public ResponseDiscussSearchDto searchDiscussion(RequestDiscussSearchDto dto) {
         discussionService.search(new CRequestDiscussSearchDto());
         return new ResponseDiscussSearchDto();
     }
 
-    // 작성 게시글 목록
+    /**
+     * 구현 완료
+     * @param memberId
+     * @return
+     */
     @GetMapping("/member/posts")
     public ResponseMemberDiscussListDto viewMemberPosts(RequestMemberDiscussListDto dto) {
-        discussionService.readMemberPosts(new CRequestMemberDiscussDto());
-        return new ResponseMemberDiscussListDto();
+        CResponseMemberDiscussDto cdto = discussionService.readMemberPosts(new CRequestMemberDiscussDto(dto.getMemberId()));
+        return new ResponseMemberDiscussListDto(cdto.getMemberDiscussions());
     }
 }

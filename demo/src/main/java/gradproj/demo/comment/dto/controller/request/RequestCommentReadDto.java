@@ -5,4 +5,8 @@ import lombok.Getter;
 @Getter
 public class RequestCommentReadDto {
     public long postId;
+
+    public RequestCommentReadDto(long postId) {
+        this.postId = postId;
+    }
 }

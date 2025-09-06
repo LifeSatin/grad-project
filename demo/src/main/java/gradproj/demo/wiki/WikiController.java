@@ -3,6 +3,7 @@ package gradproj.demo.wiki;
 import gradproj.demo.wiki.dto.controller.request.*;
 import gradproj.demo.wiki.dto.controller.response.*;
 import gradproj.demo.wiki.dto.service.request.*;
+import gradproj.demo.wiki.dto.service.response.CResponsePageReadDto;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.DeleteExchange;
 
@@ -17,42 +18,66 @@ public class WikiController {
         this.wikiService = wikiService;
     }
 
-    // 위키 페이지 생성
+    /**
+     *
+     * @param pageName
+     * @return message
+     */
     @PostMapping
     public ResponsePageCreationDto createPage(RequestPageCreationDto dto) {
-        wikiService.createPage(new CRequestPageCreationDto());
+        wikiService.createPage(new CRequestPageCreationDto(dto.getPageName()));
         return new ResponsePageCreationDto();
     }
 
-    // 위키 문서 조회
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param pageName
+     * @return pageName, content
+     */
     @GetMapping("/{pageName}")
     public ResponsePageReadDto readPage(RequestPageReadDto dto) {
-        wikiService.readPage(new CRequestPageReadDto());
-        return new ResponsePageReadDto();
+        CResponsePageReadDto cdto = wikiService.readPage(new CRequestPageReadDto(dto.getPageName()));
+        return new ResponsePageReadDto(cdto.getPageName(), cdto.getContent());
     }
 
-    // 위키 문서 수정
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param pageName, content
+     * @return message
+     */
     @PatchMapping("/{pageName}")
     public ResponsePageUpdateDto updatePage(RequestPageUpdateDto dto) {
-        wikiService.updatePage(new CRequestPageUpdateDto());
+        wikiService.updatePage(new CRequestPageUpdateDto(dto.getPageName(), dto.getContent()));
         return new ResponsePageUpdateDto();
     }
 
-    // 위키 문서 삭제
+    /**
+     * 구현 완료, 테스트 미진행
+     * @param pageName
+     * @return message
+     */
     @DeleteExchange("/{pageName}")
     public ResponsePageDeleteDto deletePage(RequestPageDeleteDto dto) {
-        wikiService.deletePage(new CRequestPageDeleteDto());
+        wikiService.deletePage(new CRequestPageDeleteDto(dto.getPageName()));
         return new ResponsePageDeleteDto();
     }
 
-    // 위키 문서 수정이력 조회
+    /**
+     *
+     * @param dto
+     * @return
+     */
     @GetMapping("/{pageName}/history")
     public ResponsePageHistoryDto viewPageHistory(RequestPageHistoryDto dto) {
         wikiService.viewPageHistory(new CRequestPageHistoryDto());
         return new ResponsePageHistoryDto();
     }
 
-    // 위키 문서 검색
+    /**
+     *
+     * @param dto
+     * @return
+     */
     @GetMapping("/search")
     public ResponsePageSearchDto searchPage(RequestPageSearchDto dto) {
         wikiService.search(new CRequestPageSearchDto());

@@ -8,8 +8,14 @@ import jakarta.persistence.Id;
 public class DBoard {
     @Id @GeneratedValue
     private long id;
+    private String name;
+    //private long postId;
 
     public DBoard() {
 
+    }
+
+    public DBoard(String name) {
+        this.name = name;
     }
 }

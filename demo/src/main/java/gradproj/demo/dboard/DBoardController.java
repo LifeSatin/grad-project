@@ -3,6 +3,10 @@ package gradproj.demo.dboard;
 import gradproj.demo.dboard.dto.*;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 구현 완료
+ * 기초 테스트 진행 완료
+ */
 @RestController
 @RequestMapping("/dboard")
 public class DBoardController {

@@ -8,7 +8,10 @@ import gradproj.demo.discussion.dto.service.response.CResponseDiscussReadDto;
 import gradproj.demo.discussion.dto.service.response.CResponseMemberDiscussDto;
 import org.springframework.web.bind.annotation.*;
 
-// 사실상 완료
+/**
+ * 구현 완료
+ * 기초 테스트 진행 완료
+ */
 @RestController
 @RequestMapping("/discuss")
 public class DiscussionController {
@@ -42,9 +45,9 @@ public class DiscussionController {
     }
 
     /**
-     * author까지 추가하기
+     * 구현 완료
      * @param postId
-     * @return
+     * @return title, content, authorId
      */
     @GetMapping("/board/post")
     public ResponseDiscussReadDto readDiscussion(RequestDiscussReadDto dto) {

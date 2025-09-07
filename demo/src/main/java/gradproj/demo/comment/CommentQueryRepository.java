@@ -18,19 +18,21 @@ public class CommentQueryRepository {
         this.queryFactory = queryFactory;
     }
 
-    public List<CommentDto> getComments(long postId) {
+    public List<CommentDto> getComments(long boardId, long postId) {
         return queryFactory
                 .select(Projections.fields(CommentDto.class,
+                        comment.id,
                         comment.authorId,
                         comment.content))
                 .from(comment)
-                .where(comment.postId.eq(postId))
+                .where(comment.boardId.eq(boardId).and(comment.postId.eq(postId)))
                 .fetch();
     }
 
     public List<CommentDto> getMemberComments(long memberId) {
         return queryFactory
                 .select(Projections.fields(CommentDto.class,
+                        comment.id,
                         comment.authorId,
                         comment.content))
                 .from(comment)

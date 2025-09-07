@@ -1,8 +1,10 @@
 package gradproj.demo.notice.dto.controller.request;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class RequestNoticeUpdateDto {
     public int postId;
     public String title;

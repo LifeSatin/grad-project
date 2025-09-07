@@ -6,7 +6,10 @@ import gradproj.demo.member.dto.service.request.*;
 import gradproj.demo.member.dto.service.response.CResponseMemberReadDto;
 import org.springframework.web.bind.annotation.*;
 
-// 회원 관련 기능 Controller
+/**
+ * 북마크 제외 구현 완료
+ * 기초 테스트 진행 완료
+ */
 @RestController
 public class MemberController {
 
@@ -17,9 +20,9 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료
-     * @param dto
-     * @return
+     * 구현 완료, 테스트 진행 완료
+     * @param id, password, nickname
+     * @return message
      */
     @PostMapping("/member")
     public ResponseMemberCreationDto createMember(RequestMemberCreationDto dto) {
@@ -29,9 +32,9 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료
-     * @param dto
-     * @return
+     * 구현 완료, 테스트 진행 완료
+     * @param memberId
+     * @return id, nickname, power
      */
     @GetMapping("/member")
     public ResponseMemberReadDto readMember(RequestMemberReadDto dto) {
@@ -40,9 +43,9 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료
-     * @param dto
-     * @return
+     * 구현 완료, 테스트 진행 완료
+     * @param memberId, newNickname
+     * @return message
      */
     @PatchMapping("/member/nickname")
     public ResponseMemberNicknameUpdateDto editMemberNickname(RequestMemberNicknameUpdateDto dto) {
@@ -51,9 +54,9 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료
-     * @param dto
-     * @return
+     * 구현 완료, 테스트 진행 완료
+     * @param memberId, newPassword
+     * @return message
      */
     @PatchMapping("/member/password")
     public ResponseMemberPasswordUpdateDto editMemberPassword(RequestMemberPasswordUpdateDto dto) {
@@ -62,9 +65,9 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
-     * @param dto
-     * @return
+     * 구현 완료, 테스트 진행 완료
+     * @param memberId
+     * @return message
      */
     @DeleteMapping("/member")
     public ResponseMemberDeleteDto deleteMember(RequestMemberDeleteDto dto) {

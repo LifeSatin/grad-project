@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 구현 완료
+ * 기초 테스트 진행 완료
+ */
 @Service
 public class DBoardService {
 

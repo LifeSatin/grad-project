@@ -3,11 +3,13 @@ package gradproj.demo.notice;
 import gradproj.demo.notice.dto.NoticeDto;
 import gradproj.demo.notice.dto.service.request.*;
 import gradproj.demo.notice.dto.service.response.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class NoticeService {
 
@@ -25,8 +27,10 @@ public class NoticeService {
     }
 
     public CResponseNoticeReadDto readNotice(CRequestNoticeReadDto dto) {
+        log.info("dto postId: " + dto.getPostId());
         Optional<Notice> byId = noticeRepository.findById(dto.getPostId());
         Notice notice = byId.orElseThrow();
+        log.info(notice.getTitle());
         return new CResponseNoticeReadDto(notice.getTitle(), notice.getContent());
     }
 

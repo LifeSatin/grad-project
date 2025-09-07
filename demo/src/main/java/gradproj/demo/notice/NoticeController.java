@@ -5,9 +5,13 @@ import gradproj.demo.notice.dto.controller.response.*;
 import gradproj.demo.notice.dto.service.request.*;
 import gradproj.demo.notice.dto.service.response.CResponseNoticeListDto;
 import gradproj.demo.notice.dto.service.response.CResponseNoticeReadDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-// 공지사항 Controller
+/**
+ * 기초 테스트 진행 완료
+ */
+@Slf4j
 @RestController
 @RequestMapping("/notice")
 public class NoticeController {
@@ -19,7 +23,7 @@ public class NoticeController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료, 테스트 진행 완료
      * @return List<id, title>
      */
     @GetMapping
@@ -29,29 +33,30 @@ public class NoticeController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
-     * @param title, content, date
+     * 구현 완료, 테스트 진행 완료
+     * @param title, content(, date)
      * @return message
      */
     @PostMapping
     public ResponseNoticeCreationDto createNotice(RequestNoticeCreationDto dto) {
-        noticeService.createNotice(new CRequestNoticeCreationDto(dto.getTitle(), dto.getContent(), dto.getDate()));
+        noticeService.createNotice(new CRequestNoticeCreationDto(dto.getTitle(), dto.getContent()));
         return new ResponseNoticeCreationDto();
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료, 테스트 진행 완료
      * @param postId
      * @return title, content, date
      */
     @GetMapping("/post")
     public ResponseNoticeReadDto readNotice(RequestNoticeReadDto dto) {
-        CResponseNoticeReadDto cdto = noticeService.readNotice(new CRequestNoticeReadDto());
+        log.info("[NoticeController] dto postId: " + dto.getPostId());
+        CResponseNoticeReadDto cdto = noticeService.readNotice(new CRequestNoticeReadDto(dto.getPostId()));
         return new ResponseNoticeReadDto(cdto.getTitle(), cdto.getContent());
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료, 테스트 진행 완료
      * @param postId, title, content
      * @return message
      */
@@ -62,7 +67,7 @@ public class NoticeController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료, 테스트 진행 완료
      * @param postId
      * @return message
      */

@@ -5,9 +5,12 @@ import gradproj.demo.comment.dto.controller.response.*;
 import gradproj.demo.comment.dto.service.request.*;
 import gradproj.demo.comment.dto.service.response.CResponseCommentReadDto;
 import gradproj.demo.comment.dto.service.response.CResponseMemberCommentsDto;
-import lombok.Getter;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 구현 완료
+ * 기초 테스트 진행 완료
+ */
 @RestController
 public class CommentController {
 
@@ -19,28 +22,28 @@ public class CommentController {
 
     /**
      * 구현 완료
-     * @param content, postId, authorId
-     * @return
+     * @param content, boardId, postId, authorId
+     * @return message
      */
     @PostMapping("/comments")
     public ResponseCommentCreationDto createComment(RequestCommentCreationDto dto) {
-        commentService.createComment(new CRequestCommentCreationDto(dto.getContent(), dto.getPostId(), dto.getAuthorId()));
+        commentService.createComment(new CRequestCommentCreationDto(dto.getContent(), dto.getBoardId(), dto.getPostId(), dto.getAuthorId()));
         return new ResponseCommentCreationDto();
     }
 
     /**
      * 구현 완료
-     * @param postId
-     * @return List<authorId, content>
+     * @param boardId, postId
+     * @return List<id, authorId, content>
      */
     @GetMapping("/comments")
     public ResponseCommentReadDto readComment(RequestCommentReadDto dto) {
-        CResponseCommentReadDto cdto = commentService.readComments(new CRequestCommentReadDto(dto.getPostId()));
+        CResponseCommentReadDto cdto = commentService.readComments(new CRequestCommentReadDto(dto.getBoardId(), dto.getPostId()));
         return new ResponseCommentReadDto(cdto.getComments());
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료
      * @param commentId, content
      * @return message
      */
@@ -51,7 +54,7 @@ public class CommentController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료
      * @param commentId
      * @return message
      */
@@ -62,9 +65,9 @@ public class CommentController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료
      * @param memberId
-     * @return List<authorId, content>
+     * @return List<id, authorId, content>
      */
     @GetMapping("/member/comments")
     public ResponseMemberCommentsDto viewMemberComments(RequestMemberCommentsDto dto) {

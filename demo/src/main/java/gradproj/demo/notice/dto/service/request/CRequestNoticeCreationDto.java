@@ -1,18 +1,14 @@
 package gradproj.demo.notice.dto.service.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Getter
+@AllArgsConstructor
 public class CRequestNoticeCreationDto {
     public String title;
     public String content;
-    public LocalDateTime date;
-
-    public CRequestNoticeCreationDto(String title, String content, LocalDateTime date) {
-        this.title = title;
-        this.content = content;
-        this.date = date;
-    }
+    //public LocalDateTime date;
 }

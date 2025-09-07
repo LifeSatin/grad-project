@@ -21,7 +21,8 @@ public class NoticeQueryRepository {
     public List<NoticeDto> getNoticeList() {
         return queryFactory
                 .select(Projections.fields(NoticeDto.class,
-                        notice.id, notice.title))
+                        notice.id,
+                        notice.title))
                 .from(notice)
                 .fetch();
     }

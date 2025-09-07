@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * 구현 완료
+ * 기초 테스트 진행 완료
+ */
 @Service
 public class CommentService {
 
@@ -20,12 +24,12 @@ public class CommentService {
     }
 
     public CResponseCommentCreationDto createComment(CRequestCommentCreationDto dto) {
-        commentRepository.save(new Comment(dto.getContent(), dto.getPostId(), dto.getAuthorId()));
+        commentRepository.save(new Comment(dto.getContent(), dto.getBoardId(), dto.getPostId(), dto.getAuthorId()));
         return new CResponseCommentCreationDto();
     }
 
     public CResponseCommentReadDto readComments(CRequestCommentReadDto dto) {
-        List<CommentDto> comments = commentQueryRepository.getComments(dto.getPostId());
+        List<CommentDto> comments = commentQueryRepository.getComments(dto.getBoardId(), dto.getPostId());
         return new CResponseCommentReadDto(comments);
     }
 

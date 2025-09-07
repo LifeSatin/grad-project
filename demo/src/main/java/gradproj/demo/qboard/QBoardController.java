@@ -8,7 +8,10 @@ import gradproj.demo.qboard.dto.service.response.CResponseQuestionListDto;
 import gradproj.demo.qboard.dto.service.response.CResponseQuestionReadDto;
 import org.springframework.web.bind.annotation.*;
 
-// 질문 게시판 Controller
+/**
+ * 검색 기능 제외 구현 완료
+ * 기초 테스트 진행 완료
+ */
 @RestController
 @RequestMapping("/question")
 public class QBoardController {
@@ -20,7 +23,7 @@ public class QBoardController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료, 테스트 진행 완료
      * @return List<postId, title, authorId>
      */
     @GetMapping
@@ -30,7 +33,7 @@ public class QBoardController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료, 테스트 진행 완료
      * @param title, content, authorId
      * @return message
      */
@@ -41,7 +44,7 @@ public class QBoardController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료, 테스트 진행 완료
      * @param postId
      * @return title, content, authorId
      */
@@ -52,8 +55,8 @@ public class QBoardController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
-     * @param postId
+     * 구현 완료, 테스트 진행 완료
+     * @param postId, title, content
      * @return message
      */
     @PatchMapping("/post")
@@ -76,7 +79,7 @@ public class QBoardController {
     }
 
     /**
-     * 구현 완료, 테스트 미진행
+     * 구현 완료, 테스트 진행 완료
      * @param memberId
      * @return List<title, content, memberId>
      */

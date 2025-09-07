@@ -1,18 +1,14 @@
 package gradproj.demo.qboard.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class QuestionDto {
-    public long postId;
+    public long id;
     public String title;
     public long authorId;
-
-    public QuestionDto(long postId, String title, long authorId) {
-        this.postId = postId;
-        this.title = title;
-        this.authorId = authorId;
-    }
 }

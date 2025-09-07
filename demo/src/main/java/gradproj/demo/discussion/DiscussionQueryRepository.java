@@ -22,7 +22,8 @@ public class DiscussionQueryRepository {
         return queryFactory
                 .select(Projections.fields(DiscussionDto.class,
                         discussion.id,
-                        discussion.title))
+                        discussion.title,
+                        discussion.authorId))
                 .from(discussion)
                 .where(discussion.boardId.eq(boardId))
                 .fetch();
@@ -32,7 +33,8 @@ public class DiscussionQueryRepository {
         return queryFactory
                 .select(Projections.fields(DiscussionDto.class,
                         discussion.id,
-                        discussion.title))
+                        discussion.title,
+                        discussion.authorId))
                 .from(discussion)
                 .where(discussion.authorId.eq(memberId))
                 .fetch();

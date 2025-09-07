@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 @Getter
 public class CResponseNoticeReadDto {
-    public String title;
-    public String content;
+    public String title = "unexisting post";
+    public String content = "this post doesn't exist.";
     //public LocalDateTime date;
 
     public CResponseNoticeReadDto(String title, String content) {

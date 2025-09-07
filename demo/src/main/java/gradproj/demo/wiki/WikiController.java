@@ -24,7 +24,35 @@ public class WikiController {
     }
 
     /**
-     * 구현 완료, 테스트 진행 완료
+     * 문서 역사 조회 기능
+     * 구현 상태: 미구현
+     * 요구 권한: 없음
+     * @param dto
+     * @return
+     */
+    @GetMapping("/history")
+    public ResponsePageHistoryDto viewPageHistory(RequestPageHistoryDto dto) {
+        wikiService.viewPageHistory(new CRequestPageHistoryDto());
+        return new ResponsePageHistoryDto();
+    }
+
+    /**
+     * 문서 검색 기능
+     * 구현 상태: 미구현
+     * 요구 권한: 없음
+     * @param dto
+     * @return
+     */
+    @GetMapping("/search")
+    public ResponsePageSearchDto searchPage(RequestPageSearchDto dto) {
+        wikiService.search(new CRequestPageSearchDto());
+        return new ResponsePageSearchDto();
+    }
+
+    /**
+     * 문서 생성 기능
+     * 구현 상태: 구현 완료
+     * 요구 권한: 없음
      * @param pageName
      * @return message
      */
@@ -35,7 +63,9 @@ public class WikiController {
     }
 
     /**
-     * 구현 완료, 테스트 진행 완료
+     * 문서 조회 기능
+     * 구현 상태: 구현 완료
+     * 요구 권한: 없음
      * @param pageName
      * @return pageName, content
      */
@@ -47,7 +77,9 @@ public class WikiController {
     }
 
     /**
-     * 구현 완료, 테스트 진행 완료
+     * 문서 수정 기능
+     * 구현 상태: 구현 완료
+     * 요구 권한: 없음
      * @param pageName, content
      * @return message
      */
@@ -58,7 +90,9 @@ public class WikiController {
     }
 
     /**
-     * 구현 완료, 테스트 진행 완료
+     * 문서 삭제 기능
+     * 구현 상태: 구현 완료
+     * 요구 권한: 없음
      * @param pageName
      * @return message
      */
@@ -66,27 +100,5 @@ public class WikiController {
     public ResponsePageDeleteDto deletePage(RequestPageDeleteDto dto) {
         wikiService.deletePage(new CRequestPageDeleteDto(dto.getPageName()));
         return new ResponsePageDeleteDto();
-    }
-
-    /**
-     *
-     * @param dto
-     * @return
-     */
-    @GetMapping("/history")
-    public ResponsePageHistoryDto viewPageHistory(RequestPageHistoryDto dto) {
-        wikiService.viewPageHistory(new CRequestPageHistoryDto());
-        return new ResponsePageHistoryDto();
-    }
-
-    /**
-     *
-     * @param dto
-     * @return
-     */
-    @GetMapping("/search")
-    public ResponsePageSearchDto searchPage(RequestPageSearchDto dto) {
-        wikiService.search(new CRequestPageSearchDto());
-        return new ResponsePageSearchDto();
     }
 }

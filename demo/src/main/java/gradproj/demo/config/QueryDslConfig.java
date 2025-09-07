@@ -1,4 +1,4 @@
-package gradproj.demo;
+package gradproj.demo.config;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

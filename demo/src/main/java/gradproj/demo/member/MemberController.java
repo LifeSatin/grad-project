@@ -7,7 +7,7 @@ import gradproj.demo.member.dto.service.response.CResponseMemberReadDto;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * 북마크 제외 구현 완료
+ * 미구현 2개 (북마크 조회, 북마크 수정) 제외 구현 완료
  * 기초 테스트 진행 완료
  */
 @RestController
@@ -20,11 +20,13 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료, 테스트 진행 완료
+     * 회원가입 기능
+     * 구현 상태: 구현 완료
+     * 요구 권한: 없음
      * @param id, password, nickname
      * @return message
      */
-    @PostMapping("/member")
+    @PostMapping("/register")
     public ResponseMemberCreationDto createMember(RequestMemberCreationDto dto) {
         CRequestMemberCreationDto cdto = new CRequestMemberCreationDto(dto.getId(), dto.getPassword(), dto.getNickname());
         memberService.createMember(cdto);
@@ -32,7 +34,9 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료, 테스트 진행 완료
+     * 회원 정보 조회 기능
+     * 구현 상태: 구현 완료
+     * 요구 권한: 본인
      * @param memberId
      * @return id, nickname, power
      */
@@ -43,7 +47,9 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료, 테스트 진행 완료
+     * 회원 닉네임 수정 기능
+     * 구현 상태: 구현 완료
+     * 요구 권한: 본인
      * @param memberId, newNickname
      * @return message
      */
@@ -54,7 +60,9 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료, 테스트 진행 완료
+     * 회원 비밀번호 수정 기능
+     * 구현 상태: 구현 완료
+     * 요구 권한: 본인
      * @param memberId, newPassword
      * @return message
      */
@@ -65,18 +73,9 @@ public class MemberController {
     }
 
     /**
-     * 구현 완료, 테스트 진행 완료
-     * @param memberId
-     * @return message
-     */
-    @DeleteMapping("/member")
-    public ResponseMemberDeleteDto deleteMember(RequestMemberDeleteDto dto) {
-        memberService.deleteMember(new CRequestMemberDeleteDto(dto.getMemberId()));
-        return new ResponseMemberDeleteDto();
-    }
-
-    /**
-     *
+     * 회원 즐겨찾기 게시판 목록 조회 기능
+     * 구현 상태: 미구현
+     * 요구 권한: 본인
      * @param dto
      * @return
      */
@@ -87,7 +86,9 @@ public class MemberController {
     }
 
     /**
-     *
+     * 회원 즐겨찾기 게시판 목록 수정 기능
+     * 구현 상태: 미구현
+     * 요구 권한: 본인
      * @param dto
      * @return
      */
@@ -95,5 +96,18 @@ public class MemberController {
     public ResponseMemberBookmarkUpdateDto updateMemberBookmarks(RequestMemberBookmarkUpdateDto dto) {
         memberService.updateMemberBookmarks(new CRequestMemberBookmarkUpdateDto(dto.getMemberId()));
         return new ResponseMemberBookmarkUpdateDto();
+    }
+
+    /**
+     * 회원 탈퇴 기능
+     * 구현 상태: 구현 완료
+     * 요구 권한: 본인 혹은 관리자
+     * @param memberId
+     * @return message
+     */
+    @DeleteMapping("/member/withdraw")
+    public ResponseMemberDeleteDto deleteMember(RequestMemberDeleteDto dto) {
+        memberService.deleteMember(new CRequestMemberDeleteDto(dto.getMemberId()));
+        return new ResponseMemberDeleteDto();
     }
 }

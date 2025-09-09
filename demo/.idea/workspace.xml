@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8e1f85e9-56c2-4409-8582-b9cb377096d6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/AdminCheckInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/LoginCheckInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/SelfCheckInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/SelfOrAdminCheckInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/dto/CRequestLoginDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/dto/CResponseLoginDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/dto/RequestLoginDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/auth/dto/ResponseLoginDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/CommentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/CommentQueryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/CommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/CommentDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/request/RequestCommentCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/request/RequestCommentDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/request/RequestCommentReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/request/RequestCommentUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/request/RequestMemberCommentsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/response/ResponseCommentCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/response/ResponseCommentDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/response/ResponseCommentReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/response/ResponseCommentUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/controller/response/ResponseMemberCommentsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/request/CRequestCommentCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/request/CRequestCommentDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/request/CRequestCommentReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/request/CRequestCommentUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/request/CRequestMemberCommentsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/response/CResponseCommentCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/response/CResponseCommentDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/response/CResponseCommentReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/response/CResponseCommentUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/comment/dto/service/response/CResponseMemberCommentsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/config/QueryDslConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/DBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/DBoardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/DBoardQueryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/DBoardRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/DBoardService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/dto/CRequestDiscussBoardCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/dto/CResponseDiscussBoardCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/dto/CResponseDiscussBoardListViewDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/dto/DBoardDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/dto/RequestDiscussBoardCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/dto/ResponseDiscussBoardCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/dboard/dto/ResponseDiscussBoardListViewDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/Discussion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/DiscussionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/DiscussionQueryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/DiscussionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/DiscussionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/DiscussionDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/request/RequestDiscussCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/request/RequestDiscussDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/request/RequestDiscussListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/request/RequestDiscussReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/request/RequestDiscussSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/request/RequestDiscussUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/request/RequestMemberDiscussListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/response/ResponseDiscussCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/response/ResponseDiscussDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/response/ResponseDiscussListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/response/ResponseDiscussReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/response/ResponseDiscussSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/response/ResponseDiscussUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/controller/response/ResponseMemberDiscussListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/request/CRequestDiscussCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/request/CRequestDiscussDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/request/CRequestDiscussListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/request/CRequestDiscussReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/request/CRequestDiscussSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/request/CRequestDiscussUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/request/CRequestMemberDiscussDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/response/CResponseDiscussCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/response/CResponseDiscussDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/response/CResponseDiscussListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/response/CResponseDiscussReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/response/CResponseDiscussSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/response/CResponseDiscussUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/discussion/dto/service/response/CResponseMemberDiscussDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/MemberController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/MemberRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/request/RequestMemberBookmarkReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/request/RequestMemberBookmarkUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/request/RequestMemberCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/request/RequestMemberDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/request/RequestMemberNicknameUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/request/RequestMemberPasswordUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/request/RequestMemberReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/response/ResponseMemberBookmarkReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/response/ResponseMemberBookmarkUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/response/ResponseMemberCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/response/ResponseMemberDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/response/ResponseMemberNicknameUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/response/ResponseMemberPasswordUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/controller/response/ResponseMemberReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/request/CRequestMemberBookmarkReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/request/CRequestMemberBookmarkUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/request/CRequestMemberCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/request/CRequestMemberDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/request/CRequestMemberNicknameUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/request/CRequestMemberPasswordUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/request/CRequestMemberReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/response/CResponseMemberBookmarkReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/response/CResponseMemberBookmarkUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/response/CResponseMemberCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/response/CResponseMemberDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/response/CResponseMemberNicknameUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/response/CResponseMemberPasswordUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/member/dto/service/response/CResponseMemberReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/Notice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/NoticeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/NoticeQueryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/NoticeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/NoticeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/NoticeDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/request/RequestNoticeCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/request/RequestNoticeDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/request/RequestNoticeReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/request/RequestNoticeSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/request/RequestNoticeUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/response/ResponseNoticeCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/response/ResponseNoticeDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/response/ResponseNoticeListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/response/ResponseNoticeReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/response/ResponseNoticeSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/controller/response/ResponseNoticeUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/request/CRequestNoticeCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/request/CRequestNoticeDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/request/CRequestNoticeReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/request/CRequestNoticeSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/request/CRequestNoticeUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/response/CResponseNoticeCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/response/CResponseNoticeDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/response/CResponseNoticeListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/response/CResponseNoticeReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/response/CResponseNoticeSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/notice/dto/service/response/CResponseNoticeUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/QBoardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/QBoardQueryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/QBoardRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/QBoardService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/Question.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/QuestionDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/request/RequestMemberQuestionsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/request/RequestQuestionCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/request/RequestQuestionReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/request/RequestQuestionSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/request/RequestQuestionUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/response/ResponseMemberQuestionsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/response/ResponseQuestionCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/response/ResponseQuestionListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/response/ResponseQuestionReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/response/ResponseQuestionSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/controller/response/ResponseQuestionUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/request/CRequestMemberQuestionsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/request/CRequestQuestionCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/request/CRequestQuestionReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/request/CRequestQuestionSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/request/CRequestQuestionUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/response/CResponseMemberQuestionsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/response/CResponseQuestionCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/response/CResponseQuestionListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/response/CResponseQuestionReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/response/CResponseQuestionSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/qboard/dto/service/response/CResponseQuestionUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/History.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/Page.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/WikiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/WikiRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/WikiService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/request/RequestPageCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/request/RequestPageDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/request/RequestPageHistoryDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/request/RequestPageReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/request/RequestPageSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/request/RequestPageUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/response/ResponsePageCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/response/ResponsePageDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/response/ResponsePageHistoryDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/response/ResponsePageReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/response/ResponsePageSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/controller/response/ResponsePageUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/request/CRequestPageCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/request/CRequestPageDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/request/CRequestPageHistoryDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/request/CRequestPageReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/request/CRequestPageSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/request/CRequestPageUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/response/CResponsePageCreationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/response/CResponsePageDeleteDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/response/CResponsePageHistoryDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/response/CResponsePageReadDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/response/CResponsePageSearchDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gradproj/demo/wiki/dto/service/response/CResponsePageUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gradproj/demo/member/MemberRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gradproj/demo/member/MemberServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gradproj/demo/member/MemberTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="326Fq6rhmgPS4TYYR9gNIhZCJ0w" />
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.MemberServiceTest.createMemberTest.executor": "Run",
+    "Gradle.demo [:Main.main()].executor": "Run",
+    "Gradle.demo [clean].executor": "Run",
+    "Gradle.demo [compileJava].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/sa/Documents/gradprod/grad-project/backend",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="gradproj.demo.comment" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.demo [compileJava]">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gradproj.demo.Main" />
+      <module name="demo.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gradproj.demo.member.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MemberServiceTest.createMemberTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;gradproj.demo.member.MemberServiceTest.createMemberTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="demo [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="demo [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.demo [compileJava]" />
+        <item itemvalue="Gradle.demo [clean]" />
+        <item itemvalue="Gradle.MemberServiceTest.createMemberTest" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e1f85e9-56c2-4409-8582-b9cb377096d6" name="Changes" comment="" />
+      <created>1756733302949</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756733302949</updated>
+    </task>
+    <servers />
+  </component>
+</project>

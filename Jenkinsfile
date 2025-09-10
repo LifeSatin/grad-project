@@ -7,28 +7,15 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Git Checkout') {
             steps {
                 checkout scm
             }
         }
 
-        stage('Prepare') {
-            steps {
-                sh '''
-                    mkdir -p ${CLASS_DIR}
-                    mkdir -p ${REPORT_DIR}
-                    mkdir -p lib
-                '''
-            }
-        }
-
         stage('Build') {
             steps {
-                sh '''
-                    echo "Compiling..."
-                    cd Test2
-                '''
+                sh './gradlew clean build -x test'
             }
         }
     }

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo "Build Start..."
+
+# down
+echo "finding a running server..."
+CURRENT_PID=$(pgrep -n java)
+if [ -n $CURRENT_PID ]; then
+	kill -15 $CURRENT_PID
+	sleep 5
+	echo "Server Down."
+fi
+
+# pull
+echo "pulling from github repository..."
+cd /workdir/server
+git config core.sparsecheckout.true
+echo backend/* >> .git/info/sparse-checkout
+git pull origin main
+chmod +x gradlew
+echo "pulling complete."
+
+# prep
+echo "setup for docker..."
+sed -i "s/localhost/db/" application.yml
+
+# build / up
+echo "building..."
+./gradlew clean build -x test
+chmod +x app.jar
+nohup java -jar app.jar
+echo "server now running. deployment complete."

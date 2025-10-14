@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * 구현 상태: 구현 완료
  * 기초 테스트 진행 완료
  */
+@CrossOrigin
 @RestController
 public class CommentController {
 

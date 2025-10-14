@@ -12,5 +12,5 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CRequestAdminCheckDto {
-    public UUID authToken;
+    public String authToken;
 }

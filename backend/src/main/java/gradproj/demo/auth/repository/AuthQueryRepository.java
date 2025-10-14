@@ -16,7 +16,7 @@ public class AuthQueryRepository {
 
     private final JPAQueryFactory queryFactory;
 
-    public String checkLevel(UUID token) {
+    public String checkLevel(String token) {
         return queryFactory
                 .select(authToken.level)
                 .from(authToken)

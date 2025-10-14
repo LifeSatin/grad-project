@@ -7,9 +7,11 @@ import java.util.List;
 
 @Getter
 public class ResponseDiscussListDto {
+    public String boardName;
     public List<DiscussionDto> discussList;
 
-    public ResponseDiscussListDto(List<DiscussionDto> discussList) {
+    public ResponseDiscussListDto(String boardName, List<DiscussionDto> discussList) {
+        this.boardName = boardName;
         this.discussList = discussList;
     }
 }

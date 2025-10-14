@@ -2,10 +2,17 @@ package gradproj.demo.auth;
 
 import gradproj.demo.auth.dto.controller.RequestLoginDto;
 import gradproj.demo.auth.dto.controller.ResponseLoginDto;
+import gradproj.demo.auth.dto.controller.ResponseLogoutDto;
 import gradproj.demo.auth.dto.service.request.CRequestLoginDto;
+import gradproj.demo.auth.dto.service.response.CResponseLoginDto;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
 public class AuthController {
 
@@ -17,16 +24,18 @@ public class AuthController {
 
     /**
      * 로그인 기능
-     * 구현 상태: 미구현
+     * 구현 상태: 구현 완료
      * 요구 권한: 없음
      * @param loginId, password
      * @return token
      */
-    @GetMapping("/login")
-    public ResponseLoginDto login(RequestLoginDto dto) {
+    @PostMapping("/login")
+    public ResponseLoginDto login(RequestLoginDto dto, HttpServletResponse response) {
         // 제출된 회원정보와 대조하고 일치하면 유효 토큰 생성 및 발급
-        authService.login(new CRequestLoginDto(dto.getLoginId(), dto.getPassword()));
-        return new ResponseLoginDto();
+        log.info("[AuthController:login] id: " + dto.getLoginId() + ", password: " + dto.getPassword());
+        CResponseLoginDto cdto = authService.login(new CRequestLoginDto(dto.getLoginId(), dto.getPassword()));
+        log.info("[AuthController:login] token: " + cdto.getToken());
+        return new ResponseLoginDto(cdto.getToken());
     }
 
     /**
@@ -37,7 +46,8 @@ public class AuthController {
      * @retyrn
      */
     @GetMapping("/logout")
-    public void logout() {
+    public ResponseLogoutDto logout() {
         // 같이 제출된 토큰 정보를 이용하여 해당 토큰을 무효화
+        return new ResponseLogoutDto();
     }
 }

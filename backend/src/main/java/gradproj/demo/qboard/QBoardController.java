@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * 검색 기능 제외 구현 완료
  * 기초 테스트 진행 완료
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/question")
 public class QBoardController {

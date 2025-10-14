@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * 기초 테스트 진행 완료
  */
 @Slf4j
+@CrossOrigin
 @RestController
 @RequestMapping("/notice")
 public class NoticeController {

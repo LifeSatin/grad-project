@@ -12,5 +12,5 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CRequestSelfCheckDto {
-    public UUID authToken;
+    public String authToken;
 }

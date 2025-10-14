@@ -5,8 +5,12 @@ import gradproj.demo.auth.dto.service.response.*;
 import gradproj.demo.auth.repository.AuthQueryRepository;
 import gradproj.demo.auth.repository.AuthRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -16,17 +20,24 @@ public class AuthService {
     private final AuthMemberAdapter authMemberAdapter;
 
     public CResponseLoginDto login(CRequestLoginDto dto) {
-        boolean isAuthenticationFailed = authMemberAdapter.isAuthenticationFailed(dto.getLoginId(), dto.getPassword());
+        log.info("[AuthService:login] id: " + dto.getLoginId() + ", password: " + dto.getPassword());
+        if (authMemberAdapter.simpleLoginMethod(dto.getLoginId()) == null) {
+            throw new RuntimeException("login failed");
+        }
+        boolean isAuthenticationSucceeded = authMemberAdapter.simpleLoginMethod(dto.getLoginId()).equals(dto.getPassword());
+        log.info("isAuthenticationSucceeded: " + isAuthenticationSucceeded);
 
-        if (isAuthenticationFailed) {
+        if (!isAuthenticationSucceeded) {
             throw new RuntimeException("login failed");
         }
 
         String id = dto.loginId;
         String level = authMemberAdapter.getMemberLevel(id);
 
-        authRepository.save(new AuthToken(id, level));
-        return new CResponseLoginDto();
+        log.info("[AuthService:login] id: " + id + ", level: " + level);
+        String token = String.valueOf(UUID.randomUUID());
+        authRepository.save(new AuthToken(String.valueOf(token), id, level));
+        return new CResponseLoginDto(token);
     }
 
     public CResponseLogoutDto logout(CRequestLogoutDto dto) {

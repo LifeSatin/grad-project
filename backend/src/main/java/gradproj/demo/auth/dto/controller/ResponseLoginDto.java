@@ -8,5 +8,11 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 public class ResponseLoginDto {
-    public UUID token;
+    public int status = 200;
+    public String message = "success";
+    public String token;
+
+    public ResponseLoginDto(String token) {
+        this.token = token;
+    }
 }

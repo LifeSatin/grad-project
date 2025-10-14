@@ -10,5 +10,5 @@ import java.util.UUID;
 public interface AuthRepository extends JpaRepository<AuthToken, UUID> {
     public AuthToken deleteByLoginId(String loginId);
 
-    public boolean existsByToken(UUID token);
+    public boolean existsByToken(String token);
 }

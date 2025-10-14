@@ -4,6 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class ResponsePageReadDto {
+    public int status = 200;
     public String pageName;
     public String content;
 

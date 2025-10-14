@@ -1,5 +1,6 @@
 package gradproj.demo.auth.dto.service.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -7,6 +8,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class CResponseLoginDto {
-    public UUID token;
+    public String token;
 }

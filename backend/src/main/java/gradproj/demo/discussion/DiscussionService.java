@@ -1,5 +1,8 @@
 package gradproj.demo.discussion;
 
+import gradproj.demo.dboard.DBoard;
+import gradproj.demo.dboard.DBoardQueryRepository;
+import gradproj.demo.dboard.DBoardRepository;
 import gradproj.demo.discussion.dto.DiscussionDto;
 import gradproj.demo.discussion.dto.service.request.*;
 import gradproj.demo.discussion.dto.service.response.*;
@@ -16,15 +19,19 @@ public class DiscussionService {
 
     private final DiscussionRepository discussionRepository;
     private final DiscussionQueryRepository discussionQueryRepository;
+    private final DBoardRepository dBoardRepository;
 
-    public DiscussionService(DiscussionRepository discussionRepository, DiscussionQueryRepository discussionQueryRepository) {
+    public DiscussionService(DiscussionRepository discussionRepository, DiscussionQueryRepository discussionQueryRepository, DBoardRepository dBoardRepository) {
         this.discussionRepository = discussionRepository;
         this.discussionQueryRepository = discussionQueryRepository;
+        this.dBoardRepository = dBoardRepository;
     }
 
     public CResponseDiscussListDto viewDiscussionList(CRequestDiscussListDto dto) {
+        DBoard dBoard = dBoardRepository.findById(dto.getBoardId()).orElseThrow();
+        String boardName = dBoard.getName();
         List<DiscussionDto> all = discussionQueryRepository.getDiscussionList(dto.getBoardId());
-        return new CResponseDiscussListDto(all);
+        return new CResponseDiscussListDto(boardName, all);
     }
 
     public CResponseDiscussCreationDto createDiscussion(CRequestDiscussCreationDto dto) {

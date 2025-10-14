@@ -18,14 +18,19 @@ public class AuthMemberAdapter {
     private final MemberRepository memberRepository;
     private final JPAQueryFactory queryFactory;
 
-    public boolean isAuthenticationFailed(String loginId, String password) {
+    public String simpleLoginMethod(String loginId) {
         return queryFactory
+                .select(member.password)
                 .from(member)
-                .where(member.loginId.eq(loginId).and(member.password.eq(password)))
-                .exists().equals(Expressions.FALSE);
+                .where(member.loginId.eq(loginId))
+                .fetchOne();
     }
 
     public String getMemberLevel(String loginId) {
-        return memberRepository.findLevelByLoginId(loginId);
+        return queryFactory
+                .select(member.power)
+                .from(member)
+                .where(member.loginId.eq(loginId))
+                .fetchOne();
     }
 }

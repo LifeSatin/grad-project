@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * 미구현 2개 (북마크 조회, 북마크 수정) 제외 구현 완료
  * 기초 테스트 진행 완료
  */
+@CrossOrigin
 @RestController
 public class MemberController {
 

@@ -9,12 +9,12 @@ import java.util.UUID;
 @Entity
 public class AuthToken {
     @Id @Column(name = "token")
-    public UUID token;
+    public String token;
     public String loginId;
     public String level;
 
-    public AuthToken(String loginId, String level) {
-        this.token = UUID.randomUUID();
+    public AuthToken(String token, String loginId, String level) {
+        this.token = token;
         this.loginId = loginId;
         this.level = level;
     }

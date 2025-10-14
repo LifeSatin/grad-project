@@ -8,11 +8,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.DeleteExchange;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 /**
  * 검색 기능과 역사 기능 제외 모두 구현 완료
  * 기초 테스트 진행 완료
  */
 @Slf4j
+@CrossOrigin
 @RestController
 @RequestMapping("/wiki")
 public class WikiController {
@@ -58,6 +62,7 @@ public class WikiController {
      */
     @PostMapping
     public ResponsePageCreationDto createPage(RequestPageCreationDto dto) {
+        log.info("createPage - pageName: " + dto.getPageName());
         wikiService.createPage(new CRequestPageCreationDto(dto.getPageName()));
         return new ResponsePageCreationDto();
     }
@@ -72,7 +77,8 @@ public class WikiController {
     @GetMapping
     public ResponsePageReadDto readPage(RequestPageReadDto dto) {
         log.info("[WikiController] dto pageName: " + dto.getPageName());
-        CResponsePageReadDto cdto = wikiService.readPage(new CRequestPageReadDto(dto.getPageName()));
+        String decodedPageName = dto.getPageName();
+        CResponsePageReadDto cdto = wikiService.readPage(new CRequestPageReadDto(decodedPageName));
         return new ResponsePageReadDto(cdto.getPageName(), cdto.getContent());
     }
 
@@ -85,6 +91,8 @@ public class WikiController {
      */
     @PatchMapping
     public ResponsePageUpdateDto updatePage(RequestPageUpdateDto dto) {
+        log.info("updatePage-pageName: " + dto.getPageName());
+        log.info("updatePage-content: " + dto.getContent());
         wikiService.updatePage(new CRequestPageUpdateDto(dto.getPageName(), dto.getContent()));
         return new ResponsePageUpdateDto();
     }
@@ -96,7 +104,7 @@ public class WikiController {
      * @param pageName
      * @return message
      */
-    @DeleteExchange
+    @DeleteMapping
     public ResponsePageDeleteDto deletePage(RequestPageDeleteDto dto) {
         wikiService.deletePage(new CRequestPageDeleteDto(dto.getPageName()));
         return new ResponsePageDeleteDto();

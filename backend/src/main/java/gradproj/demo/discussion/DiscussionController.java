@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * 구현 완료
  * 기초 테스트 진행 완료
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/discuss")
 public class DiscussionController {
@@ -32,7 +33,7 @@ public class DiscussionController {
     @GetMapping("/board")
     public ResponseDiscussListDto viewDiscussBoard(RequestDiscussListDto dto) {
         CResponseDiscussListDto cdto = discussionService.viewDiscussionList(new CRequestDiscussListDto(dto.getBoardId()));
-        return new ResponseDiscussListDto(cdto.getDiscussList());
+        return new ResponseDiscussListDto(cdto.getBoardName(), cdto.getDiscussList());
     }
 
     /**

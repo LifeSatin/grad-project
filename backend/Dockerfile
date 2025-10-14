@@ -1,4 +1,5 @@
 FROM eclipse-temurin:17-alpine AS builder
+RUN echo "latest version"
 RUN apk add --no-cache git
 WORKDIR /workdir/server
 RUN git init

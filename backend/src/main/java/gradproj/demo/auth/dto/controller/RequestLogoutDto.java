@@ -1,12 +1,14 @@
-package gradproj.demo.member.dto.controller.request;
+package gradproj.demo.auth.dto.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class RequestMemberReadDto {
+@NoArgsConstructor
+public class RequestLogoutDto {
     public String token;
 }

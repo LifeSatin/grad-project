@@ -1,9 +1,11 @@
 package gradproj.demo.member;
 
+import gradproj.demo.auth.AuthService;
 import gradproj.demo.member.dto.controller.request.*;
 import gradproj.demo.member.dto.controller.response.*;
 import gradproj.demo.member.dto.service.request.*;
 import gradproj.demo.member.dto.service.response.CResponseMemberReadDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,13 +14,10 @@ import org.springframework.web.bind.annotation.*;
  */
 @CrossOrigin
 @RestController
+@RequiredArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
-
-    public MemberController(MemberService memberService) {
-        this.memberService = memberService;
-    }
 
     /**
      * 회원가입 기능
@@ -43,8 +42,9 @@ public class MemberController {
      */
     @GetMapping("/member")
     public ResponseMemberReadDto readMember(RequestMemberReadDto dto) {
-        CResponseMemberReadDto cdto = memberService.readMemberInfo(new CRequestMemberReadDto(dto.getMemberId()));
-        return new ResponseMemberReadDto(cdto.getId(), cdto.getNickname(), cdto.getPower());
+
+        CResponseMemberReadDto cdto = memberService.readMemberInfo(new CRequestMemberReadDto(dto.getToken()));
+        return new ResponseMemberReadDto(cdto.getId(), cdto.getLoginId(), cdto.getNickname(), cdto.getPower());
     }
 
     /**

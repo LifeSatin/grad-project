@@ -1,0 +1,20 @@
+export async function load({ fetch, params, cookies }) {
+    const token = cookies.get('token') ?? null;
+
+	const res = await fetch(`http://localhost:8080/member?token=${token}`, {
+                    headers: {
+                        "Access-Control-Allow-Origin": "http://localhost:8080",
+                    }
+                });
+    const item = await res.json();
+    console.log(item);
+
+    const comres = await fetch(`http://localhost:8080/member/comments?memberId=${item.id}`)
+    console.log("comres");
+    console.log(comres);
+    const comlist = await comres.json();
+    console.log("comlist");
+    console.log(comlist);
+
+    return { item, comlist };
+}

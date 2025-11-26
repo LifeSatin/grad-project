@@ -1,12 +1,12 @@
 package gradproj.demo.member.dto.service.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
+@AllArgsConstructor
 public class CRequestMemberReadDto {
-    public long memberId;
-
-    public CRequestMemberReadDto(long memberId) {
-        this.memberId = memberId;
-    }
+    public String token;
 }

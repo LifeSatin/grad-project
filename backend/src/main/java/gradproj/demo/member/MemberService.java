@@ -1,19 +1,20 @@
 package gradproj.demo.member;
 
+import gradproj.demo.auth.AuthToken;
+import gradproj.demo.auth.repository.AuthRepository;
 import gradproj.demo.member.dto.service.request.*;
 import gradproj.demo.member.dto.service.response.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MemberService {
 
     private final MemberRepository memberRepository;
-
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
+    private final AuthRepository authRepository;
 
     // 회원 가입
     public CResponseMemberCreationDto createMember(CRequestMemberCreationDto dto) {
@@ -22,9 +23,10 @@ public class MemberService {
     }
 
     public CResponseMemberReadDto readMemberInfo(CRequestMemberReadDto dto) {
-        Optional<Member> byId = memberRepository.findById(dto.getMemberId());
-        Member member = byId.orElseThrow();
-        return new CResponseMemberReadDto(member.getLoginId(), member.getNickname(), member.getPower());
+        AuthToken token = authRepository.findById(dto.getToken()).orElseThrow();
+        long userId = token.getId();
+        Member member = memberRepository.findById(userId).orElseThrow();
+        return new CResponseMemberReadDto(member.getId(), member.getLoginId(), member.getNickname(), member.getPower());
     }
 
     public CResponseMemberNicknameUpdateDto updateMemberNickname(CRequestMemberNicknameUpdateDto dto) {

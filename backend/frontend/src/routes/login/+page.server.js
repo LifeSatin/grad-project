@@ -1,6 +1,7 @@
 /** @satisfies {import('./$types').Actions} */
 
 import { redirect } from '@sveltejs/kit';
+import { preloadData, goto } from '$app/navigation';
 
 export const actions = {
     default: async ({cookies, request}) => {
@@ -21,7 +22,7 @@ export const actions = {
         if (item.status === 200) {
             cookies.set('token', item.token, { path: '/'});
             console.log(cookies.get('token'));
-            throw redirect(303, '/question');
+            return redirect("303", "/");
         }
     }
 }

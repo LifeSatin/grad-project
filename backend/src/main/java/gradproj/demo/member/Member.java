@@ -9,6 +9,7 @@ import lombok.Getter;
 @Entity
 public class Member {
     @Id @GeneratedValue
+    @Getter
     private long id;
     @Getter
     private String loginId;

@@ -45,8 +45,7 @@ public class AuthService {
     }
 
     public CResponseLogoutDto logout(CRequestLogoutDto dto) {
-        AuthToken token = authRepository.findById(dto.getToken()).orElseThrow();
-        authRepository.delete(token);
+        authRepository.deleteById(dto.getToken());
         return new CResponseLogoutDto();
     }
 

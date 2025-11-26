@@ -1,13 +1,13 @@
 <script>
     /** @type {import('./$types').PageLoad} */
 	import favicon from '$lib/assets/favicon.svg';
-    import { onMount } from 'svelte';
+    import { afterNavigate } from '$app/navigation';
 
 	let { data, children } = $props();
 
 	let { isLoggedIn } = $state("false");
 
-	onMount(() => {
+	afterNavigate(() => {
     	if (data.item.status === 200) {
     	    isLoggedIn = true;
     	} else {
@@ -33,7 +33,7 @@
 		<nav id="navs">
 			<ul class="nav-items">
 			    {#if isLoggedIn}
-			    <li><a href="/">회원 정보</li>
+			    <li><a href="/member">회원 정보</li>
                 <li><a href="/logout">로그아웃</a></li>
 			    {:else}
 				<li><a href="/signup">회원가입</a></li>

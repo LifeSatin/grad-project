@@ -3,7 +3,7 @@
 let page = 1
 let limit = 10
 
-$: items = fetch(`http://localhost:8080/question`)
+$: items = fetch(`http://backend:8080/question`)
             .then(response => response.json())
             .then(json => json.questionList)
 

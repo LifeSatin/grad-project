@@ -5,7 +5,7 @@ import { redirect } from '@sveltejs/kit';
 export const actions = {
     default: async ({request}) => {
         const formData = await request.formData();
-        const res = await fetch(`http://localhost:8080/dboard/create`, {
+        const res = await fetch(`http://backend:8080/dboard/create`, {
             method: "POST",
             body: formData,
         });

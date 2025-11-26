@@ -1,7 +1,7 @@
 export async function load({ fetch, params, cookies }) {
     const token = cookies.get('token') ?? null;
 
-	const res = await fetch(`http://localhost:8080/member?token=${token}`, {
+	const res = await fetch(`http://backend:8080/member?token=${token}`, {
                     headers: {
                         "Access-Control-Allow-Origin": "http://localhost:8080",
                     }
@@ -9,7 +9,7 @@ export async function load({ fetch, params, cookies }) {
     const item = await res.json();
     console.log(item);
 
-    const comres = await fetch(`http://localhost:8080/member/comments?memberId=${item.id}`)
+    const comres = await fetch(`http://backend:8080/member/comments?memberId=${item.id}`)
     console.log("comres");
     console.log(comres);
     const comlist = await comres.json();

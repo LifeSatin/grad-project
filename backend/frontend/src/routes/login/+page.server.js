@@ -6,10 +6,10 @@ import { preloadData, goto } from '$app/navigation';
 export const actions = {
     default: async ({cookies, request}) => {
         const formData = await request.formData();
-        const res = await fetch(`http://localhost:8080/login`, {
+        const res = await fetch(`http://backend:8080/login`, {
             method: "POST",
             headers: {
-                "Access-Control-Allow-Origin": "http://localhost:8080",
+                "Access-Control-Allow-Origin": "http://backend:8080",
             },
             body: formData,
         });

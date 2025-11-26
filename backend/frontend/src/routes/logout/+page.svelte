@@ -10,7 +10,7 @@
             let formData = new FormData();
             formData.append("token", data.token);
             console.log(formData);
-            const res = await fetch(`http://localhost:8080/logout`, {
+            const res = await fetch(`http://backend:8080/logout`, {
                                     method: "POST",
                                     body: formData,
             });

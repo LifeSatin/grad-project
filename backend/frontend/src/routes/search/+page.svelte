@@ -8,7 +8,7 @@
     async function loadWiki() {
         wLoad = true;
         wEmpty = true;
-        const res = await fetch(`http://localhost:8080/wiki/search?keyword=${page.url.searchParams.get("q")}`);
+        const res = await fetch(`http://backend:8080/wiki/search?keyword=${page.url.searchParams.get("q")}`);
         const wJson = await res.json();
         wList = wJson.pageList;
         if (wList.length > 0) {
@@ -20,7 +20,7 @@
     async function loadQBoard() {
             qEmpty = true;
             qLoad = true;
-            const res = await fetch(`http://localhost:8080/question/search?keyword=${page.url.searchParams.get("q")}`);
+            const res = await fetch(`http://backend:8080/question/search?keyword=${page.url.searchParams.get("q")}`);
             const qJson = await res.json();
             qList = qJson.questionList;
             if (qList.length > 0) {
@@ -32,7 +32,7 @@
     async function loadDBoard() {
             dEmpty = true;
             dLoad = true;
-            const res = await fetch(`http://localhost:8080/discuss/search?keyword=${page.url.searchParams.get("q")}`);
+            const res = await fetch(`http://backend:8080/discuss/search?keyword=${page.url.searchParams.get("q")}`);
             const dJson = await res.json();
             dList = dJson.discussionList;
             if (dList.length > 0) {

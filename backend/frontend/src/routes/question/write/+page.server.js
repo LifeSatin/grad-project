@@ -10,7 +10,7 @@ export const actions = {
         formData.append("time", today.toLocaleDateString());
         formData.append("authorToken", token);
         console.log(formData);
-        const res = await fetch(`http://localhost:8080/question/write`, {
+        const res = await fetch(`http://backend:8080/question/write`, {
             method: "POST",
             body: formData,
         });

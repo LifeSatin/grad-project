@@ -1,10 +1,10 @@
 package gradproj.demo.auth;
 
-import gradproj.demo.auth.dto.controller.RequestLoginDto;
-import gradproj.demo.auth.dto.controller.ResponseLoginDto;
-import gradproj.demo.auth.dto.controller.ResponseLogoutDto;
+import gradproj.demo.auth.dto.controller.*;
 import gradproj.demo.auth.dto.service.request.CRequestLoginDto;
+import gradproj.demo.auth.dto.service.request.CRequestUserDto;
 import gradproj.demo.auth.dto.service.response.CResponseLoginDto;
+import gradproj.demo.auth.dto.service.response.CResponseUserDto;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -49,5 +49,11 @@ public class AuthController {
     public ResponseLogoutDto logout() {
         // 같이 제출된 토큰 정보를 이용하여 해당 토큰을 무효화
         return new ResponseLogoutDto();
+    }
+
+    @GetMapping("/user")
+    public ResponseUserDto getUser(RequestUserDto dto) {
+        CResponseUserDto cdto = authService.getUser(new CRequestUserDto(dto.getToken()));
+        return new ResponseUserDto(cdto.status, cdto.username);
     }
 }

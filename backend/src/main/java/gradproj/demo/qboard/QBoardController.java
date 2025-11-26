@@ -1,12 +1,14 @@
 package gradproj.demo.qboard;
 
+import gradproj.demo.audio.AudioService;
 import gradproj.demo.qboard.dto.controller.request.*;
 import gradproj.demo.qboard.dto.controller.response.*;
 import gradproj.demo.qboard.dto.service.request.*;
-import gradproj.demo.qboard.dto.service.response.CResponseMemberQuestionsDto;
-import gradproj.demo.qboard.dto.service.response.CResponseQuestionListDto;
-import gradproj.demo.qboard.dto.service.response.CResponseQuestionReadDto;
+import gradproj.demo.qboard.dto.service.response.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 /**
  * 검색 기능 제외 구현 완료
@@ -15,13 +17,11 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RestController
 @RequestMapping("/question")
+@RequiredArgsConstructor
 public class QBoardController {
 
     private final QBoardService qBoardService;
-
-    public QBoardController(QBoardService qBoardService) {
-        this.qBoardService = qBoardService;
-    }
+    private final AudioService audioService;
 
     /**
      * 질문 게시글 목록 조회 기능
@@ -45,7 +45,7 @@ public class QBoardController {
     @GetMapping("/post")
     public ResponseQuestionReadDto readQuestion(RequestQuestionReadDto dto) {
         CResponseQuestionReadDto cdto = qBoardService.readQuestion(new CRequestQuestionReadDto(dto.getPostId()));
-        return new ResponseQuestionReadDto(cdto.getTitle(), cdto.getContent(), cdto.getAuthorId());
+        return new ResponseQuestionReadDto(cdto.getTitle(), cdto.getContent(), cdto.getNickname(), cdto.getTime(), cdto.getFileId(), cdto.getFileName());
     }
 
     /**
@@ -57,8 +57,8 @@ public class QBoardController {
      */
     @GetMapping("/search")
     public ResponseQuestionSearchDto searchQuestion(RequestQuestionSearchDto dto) {
-        qBoardService.search(new CRequestQuestionSearchDto());
-        return new ResponseQuestionSearchDto();
+        CResponseQuestionSearchDto result = qBoardService.search(new CRequestQuestionSearchDto(dto.getKeyword()));
+        return new ResponseQuestionSearchDto(result.getQuestionList());
     }
 
     /**
@@ -83,8 +83,10 @@ public class QBoardController {
      */
     @PostMapping("/write")
     public ResponseQuestionCreationDto createQuestion(RequestQuestionCreationDto dto) {
-        qBoardService.createQuestion(new CRequestQuestionCreationDto(dto.getTitle(), dto.getContent(), dto.getAuthorId()));
-        return new ResponseQuestionCreationDto();
+        String fileId = UUID.randomUUID().toString();
+        audioService.uploadFile(fileId, dto.getFile());
+        CResponseQuestionCreationDto cdto = qBoardService.createQuestion(new CRequestQuestionCreationDto(dto.getTitle(), dto.getContent(), dto.getAuthorToken(), dto.getTime(), fileId, dto.getFile().getOriginalFilename()));
+        return new ResponseQuestionCreationDto(cdto.getPostId());
     }
 
     /**

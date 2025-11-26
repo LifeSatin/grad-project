@@ -13,22 +13,33 @@ function nextPage() {
 
 </script>
 
-<h1>토론 게시판 목록 페이지</h1>
-
-<a href="/discuss/create">토론 게시판 생성하기</a>
+<h4>토론 게시판 목록</h4>
 
 <div class="main" id="main">
     {#await items}
         <p>로딩 중...</p>
     {:then items}
-        <ul>
             {#each items as item, index}
-                <li>
-                    <p><a href="/discuss/{item.id}">{item.name}</a></p>
-                </li>
+                <article>
+                    <h6><a href="/discuss/{item.id}">{item.name}</a></h6>
+                </article>
             {/each}
-        </ul>
     {:catch error}
         <p>오류 발생</p>
     {/await}
 </div>
+
+<style>
+    .main {
+        text-align: left;
+    }
+
+    .main a {
+        text-decoration: none;
+    }
+
+    article h6 {
+        align-items: center;
+        margin-bottom: 0;
+    }
+</style>

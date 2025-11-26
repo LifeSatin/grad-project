@@ -3,9 +3,7 @@ package gradproj.demo.discussion;
 import gradproj.demo.discussion.dto.controller.request.*;
 import gradproj.demo.discussion.dto.controller.response.*;
 import gradproj.demo.discussion.dto.service.request.*;
-import gradproj.demo.discussion.dto.service.response.CResponseDiscussListDto;
-import gradproj.demo.discussion.dto.service.response.CResponseDiscussReadDto;
-import gradproj.demo.discussion.dto.service.response.CResponseMemberDiscussDto;
+import gradproj.demo.discussion.dto.service.response.*;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -45,8 +43,8 @@ public class DiscussionController {
      */
     @GetMapping("/search")
     public ResponseDiscussSearchDto searchDiscussion(RequestDiscussSearchDto dto) {
-        discussionService.search(new CRequestDiscussSearchDto());
-        return new ResponseDiscussSearchDto();
+        CResponseDiscussSearchDto result = discussionService.search(new CRequestDiscussSearchDto(dto.getKeyword()));
+        return new ResponseDiscussSearchDto(result.getDiscussionList());
     }
 
     /**
@@ -72,7 +70,7 @@ public class DiscussionController {
     @GetMapping("/board/post")
     public ResponseDiscussReadDto readDiscussion(RequestDiscussReadDto dto) {
         CResponseDiscussReadDto cdto = discussionService.readDiscussion(new CRequestDiscussReadDto(dto.getPostId()));
-        return new ResponseDiscussReadDto(cdto.getTitle(), cdto.getContent(), cdto.getAuthorId());
+        return new ResponseDiscussReadDto(cdto.getTitle(), cdto.getContent(), cdto.getNickname(), cdto.getTime());
     }
 
     /**
@@ -84,8 +82,8 @@ public class DiscussionController {
      */
     @PostMapping("/write")
     public ResponseDiscussCreationDto createDiscussion(RequestDiscussCreationDto dto) {
-        discussionService.createDiscussion(new CRequestDiscussCreationDto(dto.title, dto.content, dto.boardId, dto.authorId));
-        return new ResponseDiscussCreationDto();
+        CResponseDiscussCreationDto cdto = discussionService.createDiscussion(new CRequestDiscussCreationDto(dto.getTitle(), dto.getContent(), dto.getTime(), dto.getBoardId(), dto.getAuthorToken()));
+        return new ResponseDiscussCreationDto(cdto.getPostId());
     }
 
     /**

@@ -6,25 +6,25 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 
 @Entity
+@Getter
 public class Discussion {
 
     @Id @GeneratedValue
     private long id;
-    @Getter
     private String title;
-    @Getter
     private String content;
+    private String time;
     private long boardId;
-    @Getter
     private long authorId;
 
     public Discussion() {
 
     }
 
-    public Discussion(String title, String content, long boardId, long authorId) {
+    public Discussion(String title, String content, String time, long boardId, long authorId) {
         this.title = title;
         this.content = content;
+        this.time = time;
         this.boardId = boardId;
         this.authorId = authorId;
     }

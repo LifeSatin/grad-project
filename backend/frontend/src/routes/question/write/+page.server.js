@@ -5,6 +5,11 @@ import { redirect } from '@sveltejs/kit';
 export const actions = {
     default: async ({cookies, request}) => {
         const formData = await request.formData();
+        const token = cookies.get("token");
+        let today = new Date();
+        formData.append("time", today.toLocaleDateString());
+        formData.append("authorToken", token);
+        console.log(formData);
         const res = await fetch(`http://localhost:8080/question/write`, {
             method: "POST",
             body: formData,
@@ -17,7 +22,7 @@ export const actions = {
         }
 
         if (item.status === 200) {
-            throw redirect(303, '/question');
+            throw redirect(303, `/question/${item.postId}`);
         }
     }
 }

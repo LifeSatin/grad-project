@@ -8,12 +8,12 @@ public class RequestCommentCreationDto {
     public String content;
     public long boardId;
     public long postId;
-    public long authorId;
+    public String authorToken;
 
-    public RequestCommentCreationDto(String content, long boardId, long postId, long authorId) {
+    public RequestCommentCreationDto(String content, long boardId, long postId, String authorToken) {
         this.content = content;
         this.boardId = boardId;
         this.postId = postId;
-        this.authorId = authorId;
+        this.authorToken = authorToken;
     }
 }

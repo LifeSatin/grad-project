@@ -4,7 +4,7 @@ let { data } = $props();
 
 </script>
 
-<h1>토론 게시글 작성</h1>
+<h4>토론 게시글 작성</h4>
 
 <form method="POST">
     <div>
@@ -18,15 +18,17 @@ let { data } = $props();
     </div>
     <div>
         <label>
-            <textarea style="resize: none;" placeholder="내용을 입력하세요" name="content">
-            </textarea>
+            <textarea class="content" style="resize: none;" placeholder="내용을 입력하세요" name="content"></textarea>
         </label>
-    </div>
-    <div>
-        <input type="hidden" name="authorId" value=1 />
     </div>
     <div>
             <input type="hidden" name="boardId" value=1 />
     </div>
     <button>작성</button>
 </form>
+
+<style>
+    .content {
+            height: 400px;
+    }
+</style>

@@ -13,22 +13,66 @@ function nextPage() {
 
 </script>
 
-<h1>질문 게시판입니다.</h1>
+<h4 class="title">질문 게시판</h4>
 
-<a href="/question/write">작성</a>
+<form action="/question/write">
+    <label>
+        <input class="write" type="submit" value="글 작성하기">
+    </label>
+</form>
 
 <div class="main" id="main">
     {#await items}
         <p>로딩 중...</p>
     {:then items}
-        <ul>
             {#each items as item, index}
-                <li>
-                    <p><a href="/question/{item.id}">{item.title}</a></p>
-                </li>
+                <div>
+                    <article>
+                        <a href="/question/{item.id}"><h4>{item.title}</h4></a>
+                        <p>{item.time}</p>
+                        <strong>{item.nickname}</strong>
+                    </article>
+                </div>
             {/each}
-        </ul>
     {:catch error}
         <p>오류 발생</p>
     {/await}
 </div>
+
+<p>
+
+</p>
+
+<style>
+    * {
+        text-decoration: none;
+        text-align: left;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main p {
+        text-align: right;
+    }
+
+    .write {
+        height: 50px;
+        width: 120px;
+        padding: 0;
+        text-align: center;
+        margin-left: auto;
+        display: block;
+        margin-bottom: 20px;
+    }
+</style>

@@ -4,6 +4,7 @@ import gradproj.demo.wiki.dto.controller.request.*;
 import gradproj.demo.wiki.dto.controller.response.*;
 import gradproj.demo.wiki.dto.service.request.*;
 import gradproj.demo.wiki.dto.service.response.CResponsePageReadDto;
+import gradproj.demo.wiki.dto.service.response.CResponsePageSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.DeleteExchange;
@@ -49,8 +50,9 @@ public class WikiController {
      */
     @GetMapping("/search")
     public ResponsePageSearchDto searchPage(RequestPageSearchDto dto) {
-        wikiService.search(new CRequestPageSearchDto());
-        return new ResponsePageSearchDto();
+        log.info(dto.getKeyword());
+        CResponsePageSearchDto search = wikiService.search(new CRequestPageSearchDto(dto.getKeyword()));
+        return new ResponsePageSearchDto(search.getPageList());
     }
 
     /**

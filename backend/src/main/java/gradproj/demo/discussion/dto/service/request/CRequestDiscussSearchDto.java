@@ -5,4 +5,8 @@ import lombok.Getter;
 @Getter
 public class CRequestDiscussSearchDto {
     public String keyword;
+
+    public CRequestDiscussSearchDto(String keyword) {
+        this.keyword = keyword;
+    }
 }

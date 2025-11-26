@@ -1,16 +1,16 @@
 package gradproj.demo.qboard.dto.service.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public class CResponseQuestionReadDto {
     public String title;
     public String content;
-    public long authorId;
+    public String nickname;
+    public String time;
+    public String fileId;
+    public String fileName;
 
-    public CResponseQuestionReadDto(String title, String content, long authorId) {
-        this.title = title;
-        this.content = content;
-        this.authorId = authorId;
-    }
 }

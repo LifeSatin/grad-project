@@ -51,12 +51,12 @@ public class CommentController {
      * 댓글 작성 기능
      * 구현 상턔: 구현 완료
      * 요구 권한: 회원
-     * @param content, boardId, postId, authorId
+     * @param content, boardId, postId, authorToken
      * @return message
      */
     @PostMapping("/comments/write")
     public ResponseCommentCreationDto createComment(RequestCommentCreationDto dto) {
-        commentService.createComment(new CRequestCommentCreationDto(dto.getContent(), dto.getBoardId(), dto.getPostId(), dto.getAuthorId()));
+        commentService.createComment(new CRequestCommentCreationDto(dto.getContent(), dto.getBoardId(), dto.getPostId(), dto.getAuthorToken()));
         return new ResponseCommentCreationDto();
     }
 

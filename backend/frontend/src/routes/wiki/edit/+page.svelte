@@ -2,17 +2,17 @@
 import { page } from '$app/state';
 /** @type {import('./$types').PageProps} */
 let { data } = $props();
-let value = $state(decodeURIComponent(data.pageContent));
+let value = $state(data.pageContent);
 
 </script>
 
-<h1>위키 문서 수정: {decodeURIComponent(page.url.searchParams.get('pageName'))}</h1>
+<h6>위키 문서 페이지</h6>
+<h2 class="title">{decodeURIComponent(page.url.searchParams.get('pageName'))}(수정)</h2>
 
 <form method="POST">
     <div>
         <label>
-            <textarea style="resize: none;" placeholder="내용을 입력하세요" name="content" bind:value={value}>
-            </textarea>
+            <textarea style="resize: none;" id="content" name="content" bind:value={value}></textarea>
         </label>
     </div>
     <div>
@@ -20,3 +20,20 @@ let value = $state(decodeURIComponent(data.pageContent));
     </div>
     <button>작성</button>
 </form>
+
+<style>
+
+    h2, h6 {
+        text-align: left;
+        text-decoration: none;
+    }
+
+    #content {
+        height: 500px;
+    }
+
+    .hidden {
+        margin: 0;
+    }
+
+</style>

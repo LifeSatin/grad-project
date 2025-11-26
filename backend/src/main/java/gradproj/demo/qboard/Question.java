@@ -6,17 +6,17 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 
 @Entity
+@Getter
 public class Question {
     @Id @GeneratedValue
     private long id;
-    @Getter
     private String title;
-    @Getter
     private String content;
-    @Getter
     private long authorId;
-    @Getter
     private String state;
+    private String time;
+    private String fileId;
+    private String fileName;
 
     public Question() {
 
@@ -28,11 +28,13 @@ public class Question {
         this.authorId = authorId;
     }
 
-    public Question(String title, String content, long authorId, String state) {
+    public Question(String title, String content, long authorId, String time, String fileId, String fileName) {
         this.title = title;
         this.content = content;
         this.authorId = authorId;
-        this.state = state;
+        this.time = time;
+        this.fileId = fileId;
+        this.fileName = fileName;
     }
 
     public void update(String title, String content) {

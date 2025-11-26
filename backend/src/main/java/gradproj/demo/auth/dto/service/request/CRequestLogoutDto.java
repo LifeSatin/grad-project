@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CRequestLogoutDto {
-    public String loginId;
+    public String token;
 }

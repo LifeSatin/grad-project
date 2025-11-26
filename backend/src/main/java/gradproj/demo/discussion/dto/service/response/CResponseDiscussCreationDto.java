@@ -4,8 +4,10 @@ import lombok.Getter;
 
 @Getter
 public class CResponseDiscussCreationDto {
+    public long postId;
     public String message = "success";
 
-    public CResponseDiscussCreationDto() {
+    public CResponseDiscussCreationDto(long postId) {
+        this.postId = postId;
     }
 }

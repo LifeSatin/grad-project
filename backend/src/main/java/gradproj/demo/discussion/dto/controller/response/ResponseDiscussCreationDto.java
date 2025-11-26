@@ -5,8 +5,10 @@ import lombok.Getter;
 @Getter
 public class ResponseDiscussCreationDto {
     public int status = 200;
+    public long postId;
     public String message = "success";
 
-    public ResponseDiscussCreationDto() {
+    public ResponseDiscussCreationDto(long postId) {
+        this.postId = postId;
     }
 }

@@ -4,10 +4,13 @@ import gradproj.demo.auth.dto.service.request.*;
 import gradproj.demo.auth.dto.service.response.*;
 import gradproj.demo.auth.repository.AuthQueryRepository;
 import gradproj.demo.auth.repository.AuthRepository;
+import gradproj.demo.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.UUID;
 
 @Slf4j
@@ -18,6 +21,7 @@ public class AuthService {
     private final AuthRepository authRepository;
     private final AuthQueryRepository authQueryRepository;
     private final AuthMemberAdapter authMemberAdapter;
+    private final MemberRepository memberRepository;
 
     public CResponseLoginDto login(CRequestLoginDto dto) {
         log.info("[AuthService:login] id: " + dto.getLoginId() + ", password: " + dto.getPassword());
@@ -31,17 +35,18 @@ public class AuthService {
             throw new RuntimeException("login failed");
         }
 
-        String id = dto.loginId;
+        String id = dto.getLoginId();
+        long memberId = authMemberAdapter.getMemberId(id);
         String level = authMemberAdapter.getMemberLevel(id);
 
-        log.info("[AuthService:login] id: " + id + ", level: " + level);
         String token = String.valueOf(UUID.randomUUID());
-        authRepository.save(new AuthToken(String.valueOf(token), id, level));
+        authRepository.save(new AuthToken(String.valueOf(token), memberId, level));
         return new CResponseLoginDto(token);
     }
 
     public CResponseLogoutDto logout(CRequestLogoutDto dto) {
-        authRepository.deleteByLoginId(dto.getLoginId());
+        AuthToken token = authRepository.findById(dto.getToken()).orElseThrow();
+        authRepository.delete(token);
         return new CResponseLogoutDto();
     }
 
@@ -57,5 +62,15 @@ public class AuthService {
     public CResponseAdminCheckDto adminCheck(CRequestAdminCheckDto dto) {
         String s = authQueryRepository.checkLevel(dto.getAuthToken());
         return new CResponseAdminCheckDto(true);
+    }
+
+    public CResponseUserDto getUser(CRequestUserDto dto) {
+        AuthToken token = null;
+        try {
+            token = authRepository.findById(dto.getToken()).orElseThrow(NoSuchElementException::new);
+        } catch (NoSuchElementException e) {
+            return new CResponseUserDto(400, "not a user");
+        }
+        return new CResponseUserDto(200, memberRepository.findById(token.getId()).orElseThrow().getNickname());
     }
 }

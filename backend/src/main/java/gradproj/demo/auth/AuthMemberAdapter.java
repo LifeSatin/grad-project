@@ -33,4 +33,12 @@ public class AuthMemberAdapter {
                 .where(member.loginId.eq(loginId))
                 .fetchOne();
     }
+
+    public long getMemberId(String loginId) {
+        return queryFactory
+                .select(member.id)
+                .from(member)
+                .where(member.loginId.eq(loginId))
+                .fetchOne();
+    }
 }

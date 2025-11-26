@@ -2,7 +2,9 @@ package gradproj.demo.qboard;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import gradproj.demo.qboard.dto.QuestionBoardDto;
 import gradproj.demo.qboard.dto.QuestionDto;
+import gradproj.demo.qboard.dto.QuestionListDto;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,12 +20,13 @@ public class QBoardQueryRepository {
         this.queryFactory = queryFactory;
     }
 
-    public List<QuestionDto> getQuestionList() {
+    public List<QuestionBoardDto> getQuestionList() {
         return queryFactory
-                .select(Projections.fields(QuestionDto.class,
+                .select(Projections.fields(QuestionBoardDto.class,
                         question.id,
                         question.title,
-                        question.authorId))
+                        question.authorId,
+                        question.time))
                 .from(question)
                 .fetch();
     }
@@ -36,6 +39,17 @@ public class QBoardQueryRepository {
                         question.authorId))
                 .from(question)
                 .where(question.authorId.eq(memberId))
+                .fetch();
+    }
+
+    public List<QuestionDto> searchQuestion(String query) {
+        return queryFactory
+                .select(Projections.fields(QuestionDto.class,
+                        question.id,
+                        question.title,
+                        question.authorId))
+                .from(question)
+                .where(question.title.contains(query).or(question.content.contains(query)))
                 .fetch();
     }
 }

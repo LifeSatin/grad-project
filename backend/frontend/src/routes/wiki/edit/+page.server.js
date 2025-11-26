@@ -6,7 +6,6 @@ export async function load({ url }) {
                         }
                     });
         const item = await res.json();
-        console.log(item);
         return { pageExists: item.status !== 200, pageContent: item.content };
 }
 
@@ -17,8 +16,9 @@ import { redirect } from '@sveltejs/kit';
 export const actions = {
     default: async ({request, url}) => {
         const formData = await request.formData();
-        formData.set("pageName", encodeURIComponent(formData.get("pageName")));
-        formData.set("content", encodeURIComponent(formData.get("content")));
+        formData.set("pageName", formData.get("pageName"));
+        formData.set("content", formData.get("content"));
+        console.log(formData);
         const res = await fetch(`http://localhost:8080/wiki`, {
             method: "PATCH",
             body: formData,

@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface AuthRepository extends JpaRepository<AuthToken, UUID> {
-    public AuthToken deleteByLoginId(String loginId);
-
+public interface AuthRepository extends JpaRepository<AuthToken, String> {
     public boolean existsByToken(String token);
 }

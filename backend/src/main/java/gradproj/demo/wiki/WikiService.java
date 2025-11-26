@@ -2,18 +2,20 @@ package gradproj.demo.wiki;
 
 import gradproj.demo.wiki.dto.service.request.*;
 import gradproj.demo.wiki.dto.service.response.*;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class WikiService {
 
     private final WikiRepository wikiRepository;
-
-    public WikiService(WikiRepository wikiRepository) {
-        this.wikiRepository = wikiRepository;
-    }
+    private final WikiQueryRepository wikiQueryRepository;
 
     public CResponsePageCreationDto createPage(CRequestPageCreationDto dto) {
         wikiRepository.save(new Page(dto.getPageName()));
@@ -45,7 +47,9 @@ public class WikiService {
     }
 
     public CResponsePageSearchDto search(CRequestPageSearchDto dto) {
-        // 후추
-        return new CResponsePageSearchDto();
+        log.info(dto.getKeyword());
+        List<String> result = wikiQueryRepository.searchQuery(dto.getKeyword());
+        log.info(result.toString());
+        return new CResponsePageSearchDto(result);
     }
 }

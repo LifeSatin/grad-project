@@ -3,9 +3,10 @@
 let page = 1
 let limit = 10
 
-$: items = fetch(`http://backend:8080/dboard`,  headers: {
+$: items = fetch(`http://backend:8080/dboard`,  {
+            headers: {
               "Access-Control-Allow-Origin": "http://backend:8080",
-            })
+            }})
             .then(response => response.json())
             .then(json => json.boardList)
 

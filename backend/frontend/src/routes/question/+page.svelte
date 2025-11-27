@@ -3,7 +3,7 @@
 let page = 1
 let limit = 10
 
-$: items = fetch(`http://3.27.115.22:8080/question`)
+$: items = fetch(`https://3.27.115.22:8443/question`)
             .then(response => response.json())
             .then(json => json.questionList)
 

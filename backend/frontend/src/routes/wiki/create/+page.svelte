@@ -7,11 +7,8 @@
         const q = page.url.searchParams.get("q");
         console.log('the component has mounted');
         let formData = new FormData();
-        const res = await fetch(`http://localhost:8080/wiki?pageName=${q}`, {
+        const res = await fetch(`http://3.27.115.22:8080/wiki?pageName=${q}`, {
         method: "post",
-        headers: {
-            "Access-Control-Allow-Origin": "http://localhost:8080",
-            },
                 body: formData,
             });
         const item = await res.json();

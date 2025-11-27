@@ -3,10 +3,7 @@
 let page = 1
 let limit = 10
 
-$: items = fetch(`http://backend:8080/notice`,  {
-            headers: {
-                  "Access-Control-Allow-Origin": "http://backend:8080",
-             }})
+$: items = fetch(`http://3.27.115.22:8080/notice`)
             .then(response => response.json())
             .then(json => json.noticeList)
 

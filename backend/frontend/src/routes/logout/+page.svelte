@@ -10,12 +10,9 @@
             let formData = new FormData();
             formData.append("token", data.token);
             console.log(formData);
-            const res = await fetch(`http://backend:8080/logout`, {
+            const res = await fetch(`http://3.27.115.22:8080/logout`, {
                                     method: "POST",
                                     body: formData,
-                                     headers: {
-                                         "Access-Control-Allow-Origin": "http://backend:8080",
-                                                }
             });
         }
         console.log(data);

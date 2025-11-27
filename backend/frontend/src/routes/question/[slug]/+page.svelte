@@ -13,10 +13,7 @@
 
         async function loadComments() {
             loading = true;
-            const res = await fetch(`http://backend:8080/comments?boardId=0&postId=${page.params.slug}`, {
-                headers: {
-                    "Access-Control-Allow-Origin": "http://backend:8080",
-            }});
+            const res = await fetch(`http://3.27.115.22:8080/comments?boardId=0&postId=${page.params.slug}`);
             const commentJson = await res.json();
             comments = commentJson.comments;
             console.log($state.snapshot(comments))
@@ -37,7 +34,7 @@
     }
 
     export const track = {
-        src: `http://backend:8080/file?fileName=${data.item.fileId}`,
+        src: `http://3.27.115.22:8080/file?fileName=${data.item.fileId}`,
         title: `${data.item.fileName}`,
         artist: 'Johann Strauss'
     }

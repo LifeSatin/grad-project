@@ -23,10 +23,7 @@
     async function loadQBoard() {
             qEmpty = true;
             qLoad = true;
-            const res = await fetch(`http://backend:8080/question/search?keyword=${page.url.searchParams.get("q")}`,  {
-                headers: {
-                         "Access-Control-Allow-Origin": "http://backend:8080",
-              }});
+            const res = await fetch(`http://3.27.115.22:8080/question/search?keyword=${page.url.searchParams.get("q")}`);
             const qJson = await res.json();
             qList = qJson.questionList;
             if (qList.length > 0) {
@@ -38,10 +35,7 @@
     async function loadDBoard() {
             dEmpty = true;
             dLoad = true;
-            const res = await fetch(`http://backend:8080/discuss/search?keyword=${page.url.searchParams.get("q")}`,  {
-                headers: {
-                   "Access-Control-Allow-Origin": "http://backend:8080",
-            }});
+            const res = await fetch(`http://3.27.115.22:8080/discuss/search?keyword=${page.url.searchParams.get("q")}`);
             const dJson = await res.json();
             dList = dJson.discussionList;
             if (dList.length > 0) {

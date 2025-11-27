@@ -10,9 +10,9 @@ export const actions = {
         formData.append("time", today.toLocaleDateString());
         formData.append("authorToken", token);
         console.log(formData);
-        const res = await fetch(`http://backend:8080/question/write`, {
+        const res = await fetch(`http://3.27.115.22:8080/question/write`, {
             method: "POST",
-            body: formData, headers: {"Access-Control-Allow-Origin": "http://backend:8080",}
+            body: formData
         });
         const item = await res.json();
         console.log(item);

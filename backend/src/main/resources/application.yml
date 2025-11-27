@@ -27,3 +27,8 @@ logging:
 server:
   tomcat:
     baseDir: C:\Users\sa\Documents\gradprod\grad-project\backend\src\main\resources
+  ssl:
+    key-store: "classpath:keystore.p12"
+    key-store-type: PKCS12
+    key-store-password: yeon0906
+  port: 8443

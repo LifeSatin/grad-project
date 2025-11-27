@@ -6,7 +6,7 @@ import { preloadData, goto } from '$app/navigation';
 export const actions = {
     default: async ({cookies, request}) => {
         const formData = await request.formData();
-        const res = await fetch(`http://3.27.115.22:8080/login`, {
+        const res = await fetch(`https://3.27.115.22:8080/login`, {
             method: "POST",
             body: formData,
         });

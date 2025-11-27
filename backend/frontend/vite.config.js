@@ -5,6 +5,7 @@ import mkcert from 'vite-plugin-mkcert';
 export default defineConfig({
 	plugins: [sveltekit()],
 	server: {
+	    https: true,
 	    proxy: {},
 	    allowedHosts: ["3.27.115.22.nip.io"],
 	    plugins: [sveltekit(), mkcert()]

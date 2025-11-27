@@ -12,7 +12,7 @@ export const actions = {
         console.log(formData);
         const res = await fetch(`http://backend:8080/question/write`, {
             method: "POST",
-            body: formData,
+            body: formData, headers: {"Access-Control-Allow-Origin": "http://backend:8080",}
         });
         const item = await res.json();
         console.log(item);

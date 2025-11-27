@@ -13,6 +13,9 @@
             const res = await fetch(`http://backend:8080/logout`, {
                                     method: "POST",
                                     body: formData,
+                                     headers: {
+                                         "Access-Control-Allow-Origin": "http://backend:8080",
+                                                }
             });
         }
         console.log(data);

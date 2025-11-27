@@ -22,6 +22,9 @@ export const actions = {
         const res = await fetch(`http://localhost:8080/wiki`, {
             method: "PATCH",
             body: formData,
+             headers: {
+                   "Access-Control-Allow-Origin": "http://backend:8080",
+                        }
         });
         const item = await res.json();
 

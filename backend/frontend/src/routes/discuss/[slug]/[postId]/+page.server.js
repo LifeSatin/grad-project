@@ -2,7 +2,7 @@
 export async function load({ fetch, params }) {
 	const res = await fetch(`http://backend:8080/discuss/board/post?postId=${params.postId}`, {
                  headers: {
-                 "Access-Control-Allow-Origin": "http://localhost:8080",
+                 "Access-Control-Allow-Origin": "http://backend:8080",
             }
         }
     );

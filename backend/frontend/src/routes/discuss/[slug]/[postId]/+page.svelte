@@ -13,7 +13,9 @@
 
     async function loadComments() {
         loading = true;
-        const res = await fetch(`http://backend:8080/comments?boardId=${page.params.slug}&postId=${page.params.postId}`);
+        const res = await fetch(`http://backend:8080/comments?boardId=${page.params.slug}&postId=${page.params.postId}`,  headers: {
+            "Access-Control-Allow-Origin": "http://backend:8080",
+        });
         const commentJson = await res.json();
         comments = commentJson.comments;
         loading = false;

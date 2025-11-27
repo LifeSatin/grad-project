@@ -7,7 +7,8 @@ export const actions = {
         const formData = await request.formData();
         const res = await fetch(`http://3.27.115.22:8080/dboard/create`, {
             method: "POST",
-            body: formData,);
+            body: formData,
+        });
         const item = await res.json();
 
         if (item.status === 500) {

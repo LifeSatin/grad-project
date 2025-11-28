@@ -18,29 +18,30 @@ import java.nio.file.Path;
 public class AudioService {
 
     public void uploadFile(String fileId, MultipartFile file) {
-        if (file.isEmpty()) {
-            log.info("file is empty");
-        } else {
-            log.info("file is not empty");
-            try {
-                log.info("uploading files...");
-                file.transferTo(new File(fileId + ".mp3"));
-                log.info("file upload success");
-            } catch (Exception e) {
-                log.info("file upload error");
-                log.info(e.getMessage());
-                return;
+            String uploadDir = "/files/";
+            if (file.isEmpty()) {
+                log.info("file is empty");
+            } else {
+                log.info("file is not empty");
+                try {
+                    log.info("uploading files...");
+                    File dest = new File(uploadDir + fileId + ".mp3");
+                    file.transferTo(dest);
+                    log.info("saved to: " + dest.getAbsolutePath());
+                } catch (Exception e) {
+                    log.info("file upload error");
+                    log.info(e.getMessage());
+                    return;
+                }
             }
-        }
 
-        try {
-            log.info("exists: " + Files.exists(Path.of(new URI(fileId + ".mp3"))));
-        } catch (URISyntaxException e) {
-            log.info("URI wrong");
-        } catch (Exception e) {
-            log.info("exception raised");
-            log.info(e.getMessage());
-        }
-        log.info("function ended");
+            try {
+                Path path = Path.of(uploadDir, fileId + ".mp3");
+                log.info("exists: " + Files.exists(path));
+            } catch (Exception e) {
+                log.info("exception raised");
+                log.info(e.getMessage());
+            }
+            log.info("function ended");
     }
 }

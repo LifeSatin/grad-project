@@ -14,7 +14,6 @@ function nextPage() {
 </script>
 
 <h4 class="title">공지사항 게시판</h4>
-
 <div class="main" id="main">
     {#await items}
         <p>로딩 중...</p>
@@ -31,6 +30,3 @@ function nextPage() {
     {/await}
 </div>
 
-.title {
-	text-align: center;
-}

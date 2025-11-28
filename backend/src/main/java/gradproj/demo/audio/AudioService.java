@@ -22,6 +22,7 @@ public class AudioService {
             if (file.isEmpty()) {
                 log.info("file is empty");
             } else {
+                log.info("file is not empty");
                 file.transferTo(new File("/files/" + fileId + ".mp3"));
             }
         } catch (Exception e) {
@@ -34,6 +35,9 @@ public class AudioService {
             log.info("exists: " + Files.exists(Path.of(new URI("/files/" + fileId + ".mp3"))));
         } catch (URISyntaxException e) {
             log.info("URI wrong");
+        } catch (Exception e) {
+            log.info("exception raised");
         }
+        log.info("function ended");
     }
 }

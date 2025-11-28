@@ -23,7 +23,9 @@ public class AudioService {
         } else {
             log.info("file is not empty");
             try {
+                log.info("uploading files...");
                 file.transferTo(new File(fileId + ".mp3"));
+                log.info("file upload success");
             } catch (Exception e) {
                 log.info("file upload error");
                 log.info(e.getMessage());
@@ -31,13 +33,13 @@ public class AudioService {
             }
         }
 
-        log.info("file upload success");
         try {
             log.info("exists: " + Files.exists(Path.of(new URI(fileId + ".mp3"))));
         } catch (URISyntaxException e) {
             log.info("URI wrong");
         } catch (Exception e) {
             log.info("exception raised");
+            log.info(e.getMessage());
         }
         log.info("function ended");
     }

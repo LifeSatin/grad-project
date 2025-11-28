@@ -5,7 +5,7 @@ import { redirect } from '@sveltejs/kit';
 export const actions = {
     default: async ({request}) => {
         const formData = await request.formData();
-        const res = await fetch(`https://3.27.115.22:8443/register`, {
+        const res = await fetch(`https://3.27.115.22.nip.io:8443/register`, {
             method: "POST",
             body: formData,
         });

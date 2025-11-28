@@ -3,7 +3,7 @@
 let page = 1
 let limit = 10
 
-$: items = fetch(`https://3.27.115.22:8443/dboard`)
+$: items = fetch(`https://3.27.115.22.nip.io:8443/dboard`)
             .then(response => response.json())
             .then(json => json.boardList)
 

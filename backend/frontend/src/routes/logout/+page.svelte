@@ -10,7 +10,7 @@
             let formData = new FormData();
             formData.append("token", data.token);
             console.log(formData);
-            const res = await fetch(`https://3.27.115.22:8443/logout`, {
+            const res = await fetch(`https://3.27.115.22.nip.io:8443/logout`, {
                                     method: "POST",
                                     body: formData,
             });

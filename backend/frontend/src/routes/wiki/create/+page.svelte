@@ -7,7 +7,7 @@
         const q = page.url.searchParams.get("q");
         console.log('the component has mounted');
         let formData = new FormData();
-        const res = await fetch(`https://3.27.115.22:8443/wiki?pageName=${q}`, {
+        const res = await fetch(`https://3.27.115.22.nip.io:8443/wiki?pageName=${q}`, {
         method: "post",
                 body: formData,
             });

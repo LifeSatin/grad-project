@@ -10,7 +10,7 @@ export const actions = {
         formData.append("time", today.toLocaleDateString());
         formData.append("authorToken", token);
         console.log(formData);
-        const res = await fetch(`https://3.27.115.22:8443/question/write`, {
+        const res = await fetch(`https://3.27.115.22.nip.io:8443/question/write`, {
             method: "POST",
             body: formData
         });

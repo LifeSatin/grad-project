@@ -18,21 +18,22 @@ import java.nio.file.Path;
 public class AudioService {
 
     public void uploadFile(String fileId, MultipartFile file) {
-        try {
-            if (file.isEmpty()) {
-                log.info("file is empty");
-            } else {
-                log.info("file is not empty");
-                file.transferTo(new File("/files/" + fileId + ".mp3"));
+        if (file.isEmpty()) {
+            log.info("file is empty");
+        } else {
+            log.info("file is not empty");
+            try {
+                file.transferTo(new File(fileId + ".mp3"));
+            } catch (Exception e) {
+                log.info("file upload error");
+                log.info(e.getMessage());
+                return;
             }
-        } catch (Exception e) {
-            log.info("file upload error");
-            log.info(e.getMessage());
-            return;
         }
+
         log.info("file upload success");
         try {
-            log.info("exists: " + Files.exists(Path.of(new URI("/files/" + fileId + ".mp3"))));
+            log.info("exists: " + Files.exists(Path.of(new URI(fileId + ".mp3"))));
         } catch (URISyntaxException e) {
             log.info("URI wrong");
         } catch (Exception e) {

@@ -1,6 +1,6 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
-    const res = await fetch(`http://3.27.115.22:8080/wiki?pageName=${params.slug}`);
+    const res = await fetch(`https://3.27.115.22:8443/wiki?pageName=${params.slug}`);
     const item = await res.json();
     console.log(item);
     return { pageExists: item.status !== 200, pageContent: item.content, pageName: params.slug };

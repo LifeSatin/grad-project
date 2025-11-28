@@ -1,6 +1,6 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, params }) {
-	const res = await fetch(`http://3.27.115.22:8080/discuss/board/post?postId=${params.postId}`);
+	const res = await fetch(`https://3.27.115.22:8443/discuss/board/post?postId=${params.postId}`);
     const post = await res.json();
     console.log(params.postId);
     console.log("load");
@@ -17,7 +17,7 @@ export const actions = {
         console.log(token);
         formData.append("authorToken", token);
         console.log(formData);
-        const res = await fetch(`http://3.27.115.22:8080/comments/write`, {
+        const res = await fetch(`https://3.27.115.22:8443/comments/write`, {
             method: "POST",
             body: formData,
         });

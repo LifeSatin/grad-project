@@ -27,8 +27,16 @@ logging:
 server:
   port: 8443
   tomcat:
+<<<<<<< HEAD
     baseDir: /home/ec2-user/gradproj/grad-project/backend/src/main/resources
   ssl:
     key-store: "classpath:keystore.p12"
     key-store-type: PKCS12
     key-store-password: yeon0906  
+=======
+    baseDir: /home/ec2-user/gradproj/grad-project/backend/src/main/resources
+  ssl:
+    key-store: "classpath:keystore.p12"
+    key-store-type: PKCS12
+    key-store-password: yeon0906
+>>>>>>> 4ca2c27347ba89a0368327d99f04bb572fb4e7e7

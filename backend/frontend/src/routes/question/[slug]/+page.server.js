@@ -1,6 +1,6 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, params }) {
-	const res = await fetch(`http://backend:8080/question/post?postId=${params.slug}`, {
+	const res = await fetch(`https://3.27.115.22:8443/question/post?postId=${params.slug}`, {
                     headers: {
                         "Access-Control-Allow-Origin": "http://backend:8080",
                     }
@@ -19,7 +19,7 @@ export const actions = {
             formData.append("time", today.toLocaleDateString());
             formData.append("authorToken", token);
             console.log(formData);
-            const res = await fetch(`http://backend:8080/comments/write`, {
+            const res = await fetch(`https://3.27.115.22:8443/comments/write`, {
                 method: "POST",
                 headers: {
                     "Access-Control-Allow-Origin": "http://backend:8080",

@@ -13,7 +13,7 @@
 
     async function loadComments() {
         loading = true;
-        const res = await fetch(`http://3.27.115.22:8080/comments?boardId=${page.params.slug}&postId=${page.params.postId}`);
+        const res = await fetch(`https://3.27.115.22:8443/comments?boardId=${page.params.slug}&postId=${page.params.postId}`);
         const commentJson = await res.json();
         comments = commentJson.comments;
         loading = false;

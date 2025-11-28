@@ -15,7 +15,7 @@ public class AudioService {
 
     public void uploadFile(String fileId, MultipartFile file) {
         try {
-            if (!file.isEmpty()) {file.transferTo(new File(fileId + ".mp3"));}
+            if (!file.isEmpty()) {file.transferTo(new File("/files/" + fileId + ".mp3"));}
         } catch (Exception e) {
             log.info("file upload error");
             log.info(e.getMessage());

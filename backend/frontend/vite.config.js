@@ -4,7 +4,10 @@ import mkcert from 'vite-plugin-mkcert';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	plugins: [
+	    sveltekit(),
+	    basicSsl(),
+	],
 	server: {
 	    https: true,
 	    proxy: {},

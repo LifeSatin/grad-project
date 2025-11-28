@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 @Slf4j
@@ -14,13 +16,32 @@ import java.io.IOException;
 public class AudioService {
 
     public void uploadFile(String fileId, MultipartFile file) {
-        try {
-            if (!file.isEmpty()) {file.transferTo(new File(fileId + ".mp3"));}
-        } catch (Exception e) {
-            log.info("file upload error");
-            log.info(e.getMessage());
-            return;
-        }
-        log.info("file upload success");
+	String uploadDir = "/files/";
+            if (file.isEmpty()) {
+                log.info("file is empty");
+            } else {
+                log.info("file is not empty");
+                try {
+                    log.info("uploading files...");
+                    String absoultePath = uploadDir + fileId + ".mp3";
+                    Path path = Paths.get(absoultePath).toAbsolutePath();
+                    File dest = path.toFile();
+                    file.transferTo(dest);
+                    log.info("saved to: " + dest.getAbsolutePath());
+                } catch (Exception e) {
+                    log.info("file upload error");
+                    log.info(e.getMessage());
+                    return;
+                }
+            }
+
+            try {
+                Path path = Path.of(uploadDir, fileId + ".mp3");
+                log.info("exists: " + Files.exists(path));
+            } catch (Exception e) {
+                log.info("exception raised");
+                log.info(e.getMessage());
+            }
+            log.info("function ended");
     }
 }

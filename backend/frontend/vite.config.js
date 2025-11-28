@@ -11,7 +11,7 @@ export default defineConfig({
 	server: {
 	    https: true,
 	    proxy: {},
-	    allowedHosts: ["3.27.115.22.nip.io"],
+	    allowedHosts: ["3.27.115.22.nip.io", "3.27.115.22"],
 	    plugins: [sveltekit(), mkcert()]
 	}
 });

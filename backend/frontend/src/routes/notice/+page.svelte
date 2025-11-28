@@ -13,9 +13,7 @@ function nextPage() {
 
 </script>
 
-<h1>공지사항 게시판</h1>
-
-<a href="/notice/write">작성</a>
+<h4 class="title">질문 게시판</h4>
 
 <div class="main" id="main">
     {#await items}
@@ -32,3 +30,7 @@ function nextPage() {
         <p>오류 발생</p>
     {/await}
 </div>
+
+.title {
+        text-align: center;
+}

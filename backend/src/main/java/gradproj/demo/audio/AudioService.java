@@ -6,11 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 @Slf4j
@@ -25,7 +23,9 @@ public class AudioService {
                 log.info("file is not empty");
                 try {
                     log.info("uploading files...");
-                    File dest = new File(uploadDir + fileId + ".mp3");
+                    String absoultePath = uploadDir + fileId + ".mp3";
+                    Path path = Paths.get(absoultePath).toAbsolutePath();
+                    File dest = path.toFile();
                     file.transferTo(dest);
                     log.info("saved to: " + dest.getAbsolutePath());
                 } catch (Exception e) {

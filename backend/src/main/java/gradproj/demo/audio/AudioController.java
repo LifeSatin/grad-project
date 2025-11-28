@@ -20,7 +20,9 @@ public class AudioController {
 
     @GetMapping()
     public ResponseEntity<Resource> getFile(String fileName) throws IOException {
-        Path path = Paths.get("/home/ec2-user/gradprod/grad-project/backend/src/main/resources/work/Tomcat/localhost/ROOT/" + fileName + ".mp3");
+        String uploadDir = "/files/";
+        String fullPath = uploadDir + fileName + ".mp3";
+        Path path = Paths.get(fullPath).toAbsolutePath();
         Resource resource = new FileSystemResource(path);
 
         return ResponseEntity.ok()

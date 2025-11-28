@@ -1,6 +1,6 @@
 /** @type {import('./$types').PageLoad} */
 export async function load({ url }) {
-    const res = await fetch(`http://3.27.115.22:8080/wiki?pageName=${url.searchParams.get('pageName')}`);
+    const res = await fetch(`https://3.27.115.22:8443/wiki?pageName=${url.searchParams.get('pageName')}`);
         const item = await res.json();
         return { pageExists: item.status !== 200, pageContent: item.content };
 }
@@ -15,7 +15,7 @@ export const actions = {
         formData.set("pageName", formData.get("pageName"));
         formData.set("content", formData.get("content"));
         console.log(formData);
-        const res = await fetch(`http://3.27.115.22:8080/wiki`, {
+        const res = await fetch(`https://3.27.115.22:8443/wiki`, {
             method: "PATCH",
             body: formData,
         });

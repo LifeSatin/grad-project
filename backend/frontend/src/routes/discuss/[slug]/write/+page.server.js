@@ -9,7 +9,7 @@ export const actions = {
         formData.append("authorToken", token);
         let today = new Date();
         formData.append("time", today.toLocaleDateString());
-        const res = await fetch(`http://3.27.115.22:8080/discuss/write`, {
+        const res = await fetch(`https://3.27.115.22:8443/discuss/write`, {
             method: "POST",
             body: formData,
         });
